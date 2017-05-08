@@ -1,0 +1,27 @@
+Pays:
+    type: entity
+    table: pays
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nom:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        nomCourt:
+            type: string
+            nullable: true
+            length: 5
+            options:
+                fixed: false
+            column: nom_court
+    lifecycleCallbacks: {  }

@@ -1,0 +1,61 @@
+user
+{
+	nom,
+	prenom,
+	email,
+	passwordHash,
+	salt,
+	adresse,
+	locationId,
+	telephone	
+}
+
+duty
+{	
+	objetId,
+	contenu,
+	paysList,
+	isFree,
+	prixMinimum,
+	prixMaximum,
+	ultimatumDate,
+	image,
+	userId
+}
+
+trip
+{
+	pays,
+	transportId,
+	userId,
+	dateDebut,
+	dateFin
+}
+
+pays
+{
+	nom,
+	nom_court	
+}
+
+objet
+{
+	nom,
+	desc,
+	paysId,
+	image,
+	prix
+}
+
+
+* Je voyage - [user - trip]
+* je cherche - [user - duty]
+* une gallerie - [ duty + objets typique du pays ]
+
+//Create user duty
+CREATE USER 'duty'@'localhost' IDENTIFIED BY 'duty'
+GRANT ALL PRIVILEGES ON *.* TO 'duty'@'%' IDENTIFIED BY 'duty' WITH GRANT OPTION;
+
+//Model Generation from DB
+php vendor/bin/doctrine orm:convert-mapping --from-database annotation app/Model/
+

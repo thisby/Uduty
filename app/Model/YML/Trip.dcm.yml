@@ -1,0 +1,40 @@
+Trip:
+    type: entity
+    table: trip
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        paysid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: paysId
+        transportid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: transportId
+        userid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: userId
+        datedepart:
+            type: datetime
+            nullable: true
+            column: dateDepart
+        datefin:
+            type: datetime
+            nullable: true
+            column: dateFin
+    lifecycleCallbacks: {  }

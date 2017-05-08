@@ -1,0 +1,58 @@
+User:
+    type: entity
+    table: user
+    id:
+        nom:
+            type: string
+            nullable: false
+            length: 60
+            options:
+                fixed: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        prenom:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        email:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        passwordHash:
+            type: string
+            nullable: true
+            length: 32
+            options:
+                fixed: false
+            column: password_hash
+        salt:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        adresse:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        locationId:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: location_id
+        telephone:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+    lifecycleCallbacks: {  }
