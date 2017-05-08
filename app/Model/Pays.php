@@ -13,12 +13,12 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * Entity\Pay
+ * Entity\Pays
  *
  * @ORM\Entity(repositoryClass="PaysRepository")
  * @ORM\Table(name="pays")
  */
-class Pay
+class Pays
 {
     /**
      * @ORM\Id
@@ -50,7 +50,7 @@ class Pay
      * Set the value of id.
      *
      * @param integer $id
-     * @return \Entity\Pay
+     * @return \Entity\Pays
      */
     public function setId($id)
     {
@@ -96,7 +96,7 @@ class Pay
      * Set the value of nom_court.
      *
      * @param string $nom_court
-     * @return \Entity\Pay
+     * @return \Entity\Pays
      */
     public function setNomCourt($nom_court)
     {
@@ -123,7 +123,7 @@ class Pay
      */
     public function setTrip(Trip $trip = null)
     {
-        $trip->setPays($this);
+        $trip->setPayss($this);
         $this->trip = $trip;
 
         return $this;
