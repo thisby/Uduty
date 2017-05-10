@@ -57,10 +57,10 @@ class Trip
     protected $user;
 
     /**
-     * @ORM\OneToOne(targetEntity="Pay", inversedBy="trip")
+     * @ORM\OneToOne(targetEntity="Pays", inversedBy="trip")
      * @ORM\JoinColumn(name="pays_id", referencedColumnName="id", nullable=false)
      */
-    protected $pay;
+    protected $pays;
 
     public function __construct()
     {
@@ -232,12 +232,12 @@ class Trip
     /**
      * Set Pay entity (one to one).
      *
-     * @param \Entity\Pay $pay
+     * @param \Entity\Pay $pays
      * @return \Entity\Trip
      */
-    public function setPay(Pay $pay)
+    public function setPays(Pay $pays)
     {
-        $this->pay = $pay;
+        $this->pays = $pays;
 
         return $this;
     }

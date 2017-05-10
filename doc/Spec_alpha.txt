@@ -1,0 +1,93 @@
+user
+{
+	nom,
+	prenom,
+	email,
+	passwordHash,
+	salt,
+	adresse,
+	locationId,
+	telephone	
+}
+
+duty
+{	
+	objetId,
+	contenu,
+	paysList,
+	isFree,
+	prixMinimum,
+	prixMaximum,
+	ultimatumDate,
+	image,
+	userId
+}
+
+trip
+{
+	pays,
+	transportId,
+	userId,
+	dateDebut,
+	dateFin
+}
+
+pays
+{
+	nom,
+	nom_court	
+}
+
+objet
+{
+	nom,
+	desc,
+	paysId,
+	image,
+	prix
+}
+
+
+* Je voyage - [user - trip]
+* je cherche - [user - duty]
+* une gallerie - [ duty + objets typique du pays ]
+
+Verifier les bases de données
+show databases;
+
+Si la base de données paoc existe , la supprimer:
+drop database duty;
+
+Recreer la base : 
+create database duty default character set "utf8";
+
+
+//Create user duty
+CREATE USER 'duty'@'localhost' IDENTIFIED BY 'duty';
+GRANT ALL PRIVILEGES ON duty.* TO 'duty'@'%' IDENTIFIED BY 'duty' WITH GRANT OPTION;
+
+- % indique que l'utilisateur peut se connecter de partout
+- duty.* est le nom de l'utilisateur
+- duty son mot de passe
+
+//Table a partir de classes.php
+php vendor/bin/doctrine doctrine:schema:update --force
+
+
+//Model Generation from DB
+php vendor/bin/doctrine orm:convert-mapping --from-database annotation app/Model/
+
+//Git configuration login mdp
+git config --global user.name "thisby" 
+git config --global user.email "bentaleb.youness@gmail.com" 
+git config --global user.password "git4This"
+
+//Architecture BDD
+
+
+Pays
+Objet
+User
+Trip
+Duty
+
