@@ -1,0 +1,88 @@
+Bonnes pratiques
+Bonnes pratiques
+Format du code
+Symfony
+Conventions du code pour Symfony
+Protéger les appels aux APIs externes par des try / catch et des timeouts courts
+Ajouter des logs
+Générer les URLs grâce aux méthodes fournis par Symfony
+Vérification des droits au début de chaque action des contrôleurs
+Utilisation de la méthode "dump" uniquement en environnement de DEV
+Création de commandes Symfony
+Unicité des IDs des éléments HTML au au sein de la même page
+Appels AJAX
+Branches dans GIT
+Modifier cette section
+Format du code
+Caractéristique	Format à utiliser
+Char encoding	UTF-8
+Line breaks	LF (unix)
+Indentation	4 espaces
+Modifier cette section
+Symfony
+Certaines fonctionnalités du framework peuvent être implémentées de plusieurs façons différentes (ex : annotations, fichier YAML, fichier XML...). Le tableau ci-dessous décrit l'implémentation à utiliser sur le projet, afin d'avoir un code homogène :
+
+Fonctionnalité	Format à utiliser	Commentaires
+Routage	Fichier YAML	Pour avoir toutes les règles de routage au même endroit (app/config/routing.yml)
+Vue	Format Twig	
+Fichiers config	YAML	
+ORM	Annotations	Pour voir sur l'entity les impacts sur la DB
+Modifier cette section
+Conventions du code pour Symfony
+Les conventions du code pour Symfony (conventions de nommage, structures...) sont décrites dans :
+http://symfony.com/doc/3.1/contributing/code/standards.html
+
+Modifier cette section
+Protéger les appels aux APIs externes par des try / catch et des timeouts courts
+Lorsque un web service externe est appelle, prévoir qu'il peut ne pas répondre (timeout). Ce timeout devrait idéalement être paramétrable dans le fichier de config.
+Prévoir aussi que le service peut renvoyer des réponses incorrectes et/ou mal formatés, et éviter des erreurs 500 en se protégeant avec des validations de la réponse et des try / catch.
+
+Modifier cette section
+Ajouter des logs
+Il vaut mieux avoir trop de logs que pas assez. Prévoir d'ajouter d'info sur le contexte dans chaque log (ex : utilisateur, projet, environnement, service...) et réutiliser le même format pour tous les logs, par exemple :
+
+[id_user] [id_projet] [id_env] [id_serv]
+Types de log :
+erreur : pas de fonctionnement normal
+warning : erreur "normal" (ex : mauvais input, mauvaise réponse API externe)
+info : appels et réponses APIs externes, début et fin d'actions (ex : créations, modifications, suppressions)...
+Si possible, étendre monolog / surcharger la méthode "log" pour harmoniser les logs.
+
+Modifier cette section
+Générer les URLs grâce aux méthodes fournis par Symfony Par exemple, avec les tags "path" ou "url" depuis les vues Twig. Pensez notamment aux URLs qui sont générées dynamiquement via JS.
+Ceci est important car en recette et production l'application sera déployé avec des context paths différents :
+Recette : recettepaoc
+Production : paoc
+Modifier cette section
+Vérification des droits au début de chaque action des contrôleurs Vérifier :
+Que l'objet (ex : utilisateur, prestation, service...) auquel on essaie d'accéder existe bien
+Que l'utilisateur connecté a le droit de faire l'action demandée sur l'objet
+Que l'état de l'objet permet de faire l'action demandée
+Modifier cette section
+Utilisation de la méthode "dump" uniquement en environnement de DEV
+La méthode "dump" doit être utilisée le moins possible. Préférer l'utilisation des logs, qui sont réutilisables en production.
+S'il il n'y a pas d'alternative, la méthode "dump" doit être utilisé uniquement en environnement de DEV. Pour cela pensez à la protéger avec un check de l'environnement.
+
+Modifier cette section
+Création de commandes Symfony
+Mettre le moins de logique applicative dans la commande, car la logique applicative devrait être gérée dans les services pour être commune avec la partie "serveur web".
+Output de la commande : ajouter les dates de début et de fin d'exécution de la commande et la durée d'exécution en secondes. Ajouter un résumé de ce qui a été traite avec succès, et des traitements en échec.
+Ne pas utiliser des couleurs dans l'output des commandes si la commande sera exécute par cron, car les codes couleurs peuvent ne pas être interprétés correctement par cron.
+Modifier cette section
+Unicité des IDs des éléments HTML au au sein de la même page
+Les IDs des éléments HTML au au sein de la même page doivent être uniques. Si ce n'est pas le cas, pensez à utiliser une class HTML.
+
+Modifier cette section
+Appels AJAX
+Quand un appel Ajax est déclenché, pensez à : désactiver le bouton ; nettoyer la liste de messages d'erreur existante ; afficher éventuellement une spinner (si le traitement peut être long)
+Quand l'appel Ajax reçoit la réponse, pensez à : masquer le spinner si besoin ; afficher les messages correspondants (succès / erreur) ; rafraîchir toute la page s'il y a plusieurs données à mettre à jour
+D'un autre côté, pensez à harmoniser la structure des réponses JSON (côté controllers) utilisées par des appels Ajax de l'application (ex : response ; data ; status ; error { code ; message } ... }
+
+Modifier cette section
+Branches dans GIT
+Le développement est fait dans la branche "master"
+S'il y a des correctifs à patcher sur la prod, faire une branche à partir du tag de la version déployée. Nom de la branche ${v_major}.${v_medium}.x
+Pensez à faire des commits "atomiques" : un commit ne doit pas contenir du code d'une évolution et du code d'un bugfix. Si vous êtes au milieu du dev d'une évol et que vous trouvez un bug qui n'a rien a voir, commitez-le séparément (si ça concerne le même fichier, mettre le code de l'évol en "stash" avant de fixer et commiter.
+Mettre des commentaires explicites dans chaque commit Git, surtout si ce n'est pas lié à aucun Redmine
+Mettre des bugfix dans la branche "patch_prod" (ex : 0.3.x) uniquement si l'anomalie est en prod, elle est grave et ça mérite un patch (à valider avec le CP si ce n'est pas évident de classifier l'anomalie). Restez zen lors de la classification d'anomalies et leur correction. Dans ce cas-là, pensez à faire un merge pour rapatrier le code de la branche "patch" dans le "master" (si les fix sont toujours d'actualité dans le "master")
+Avant de déployer une version de la branche "patch", vérifier s'il n'y aurait pas des corrections dans le master qui mériteraient d'être "cherry-pickées" dans la branche "patch"
