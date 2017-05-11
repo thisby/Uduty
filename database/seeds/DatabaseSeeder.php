@@ -14,8 +14,9 @@ class DatabaseSeeder extends Seeder
     	Eloquent::unguard();
         //$this->call(PaysTableSeeder::class);
         //$this->call(ObjectTableSeeder::class);
-        $this->call(UserTableSeeder::class);
+        //$this->call(UserTableSeeder::class);        
         //$this->call(TripTableSeeder::class);
+        $this->call(DutyTableSeeder::class);
     }
 }
 
@@ -30,7 +31,7 @@ class UserTableSeeder extends Seeder {
 	 	$trips = (array)DB::table('trip')->select('id')->pluck('id')->all();
 	 	$pays = (array)DB::table('pays')->select('id')->pluck('id')->all();	 	
 		$objects = (array)DB::table('objet')->select('id')->pluck('id')->all();	 	
-		for ($i = 0; $i < 30; $i++)
+		for ($i = 0; $i < 10; $i++)
 		{
 		  DB::table('user')->insert([
 			'nom' => $faker->lastName,
@@ -96,7 +97,7 @@ class TripTableSeeder extends Seeder {
   {
   		$faker = Faker\Factory::create();
   		$pays = DB::table('pays')->select('id')->pluck('id')->all();
-		for ($i = 0; $i < 100; $i++)
+		for ($i = 0; $i < 10; $i++)
 		{
 		  DB::table('trip')->insert([
 		    'id' => $i,//$faker->unique($reset = true)->randomDigitNotNull,
@@ -115,7 +116,48 @@ class DutyTableSeeder extends Seeder {
  
   public function run()
   {
-  
+  		$faker = Faker\Factory::create('fr_FR');
+       
+        //$trips = (array)DB::table('trip')->select('id')->pluck('id')->all();
+        $pays = (array)DB::table('pays')->select('id')->pluck('id')->all();    
+        $objects = (array)DB::table('objet')->select('id')->pluck('id')->all();  
+        $objects = $faker->shuffle($objects);
+
+        //print_r($objects);
+
+        //echo $objects[$faker->numberBetween($min = 0, $max = count($objects) -1)];
+
+        $users = (array)DB::table('user')->pluck('nom')->all();
+        //->pluck('nom')->all();
+
+        //print_r($users);
+
+        for ($i = 0; $i < 10; $i++)
+        {
+
+			$d = [];
+	        for($i = 0;$i < $faker->numberBetween($min = 0, $max = 5);$i++)
+	        {
+	        	$row = $faker->randomElements($pays);
+				$d[] = $row[0];
+	        }
+
+	        $json = "{" . join(',',$d) . "}";
+
+
+            DB::table('duty')->insert([
+	            'id' => $i,
+	            'objet_id' => $faker->randomElements($objects)[0],
+	            'contenu' => $faker->text,            
+	            'pays_list' => $json,
+	            'is_free' => $faker->randomElements([0,1])[0],
+	            'prix_minimum' => $faker->numerify('##'),
+	            'prix_maximum' => $faker->numerify('###'),
+	            'ultimatum_date' => $faker->dateTimeThisCentury->format('Y-m-d H:i:s') ,
+	            'image' => $faker->asciify('********'),
+	            'user_id' => $faker->randomElements($users)[0]
+          ]);
+        }
   }
  
 }

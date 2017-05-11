@@ -71,7 +71,7 @@ GRANT ALL PRIVILEGES ON duty.* TO 'duty'@'%' IDENTIFIED BY 'duty' WITH GRANT OPT
 - duty son mot de passe
 
 //Table a partir de classes.php
-php vendor/bin/doctrine doctrine:schema:update --force
+php artisan doctrine:schema:update --force
 
 
 //Model Generation from DB

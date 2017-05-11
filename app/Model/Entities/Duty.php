@@ -62,7 +62,8 @@ class Duty
     protected $image;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * 
+     * @ORM\Column(type="string", length=255, nullable=false)
      */
     protected $user_id;
 
