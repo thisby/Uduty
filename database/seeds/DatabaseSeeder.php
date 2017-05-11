@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
         //$this->call(UserTableSeeder::class);        
         //$this->call(TripTableSeeder::class);
         $this->call(DutyTableSeeder::class);
+
     }
 }
 
@@ -33,7 +34,7 @@ class UserTableSeeder extends Seeder {
 		$objects = (array)DB::table('objet')->select('id')->pluck('id')->all();	 	
 		for ($i = 0; $i < 10; $i++)
 		{
-		  DB::table('user')->insert([
+		  DB::table('users')->insert([
 			'nom' => $faker->lastName,
 			//'duty_id' => $i,
 			//'duty_objet_id' => $faker->randomElement($objects),
@@ -75,20 +76,6 @@ class PaysTableSeeder extends Seeder {
 		}
    }
 }
-
-
-
-
-/*
-
-'id',
-'pays_id',
-'transport_id',
-'user_id',
-'date_depart',
-'date_fin'
-
-*/
 
 
 class TripTableSeeder extends Seeder {
@@ -162,15 +149,6 @@ class DutyTableSeeder extends Seeder {
  
 }
 
-
-/*
-'id',
-'nom',
-'desc',
-'pays_id',
-'local_prix',
-'image'
-*/
 
 class ObjectTableSeeder extends Seeder {
  

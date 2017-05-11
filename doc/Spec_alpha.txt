@@ -71,6 +71,12 @@ GRANT ALL PRIVILEGES ON duty.* TO 'duty'@'%' IDENTIFIED BY 'duty' WITH GRANT OPT
 - duty son mot de passe
 
 //Table a partir de classes.php
+<<<<<<< Updated upstream
+=======
+php artisan doctrine:schema:create
+
+//update si modif
+>>>>>>> Stashed changes
 php artisan doctrine:schema:update --force
 
 

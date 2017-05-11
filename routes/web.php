@@ -15,11 +15,5 @@ Route::get('/', function () {
     return view('default');
 });
 
-Route::get('duty/list/{country}', function($country)
-{
-	//Route::get('user/{id}', 'UserController@show');
-  return view('duty.list',['country' => $country]);
-}
-);
-
+Route::get('duty/list/{country}', 'DutyController@list($country)');
 

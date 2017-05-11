@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Doctrine\ORM\EntityManager;
 
 class DutyController extends Controller
 {
@@ -13,7 +14,10 @@ class DutyController extends Controller
      */
     public function index()
     {
-        //
+
+         $em = GetEntityManager();
+         $duties = $em->getRepository('Entity/duty')->all();
+         return view('duty.list', ['duties' => $duties]);
     }
 
     /**
