@@ -16,7 +16,7 @@ class DutyController extends Controller
     /**
      * @var string
      */
-    private $class = 'Entity\Trip';
+    private $class = 'Entity\Duty';
     /**
      * @var EntityManager
      */
@@ -38,7 +38,7 @@ class DutyController extends Controller
 
          $repository = $this->em->getRepository($this->class);
          $duties = $repository->getAll();
-         return view('duty.list', ['duties' => $duties[2]->getPays()->getNom(),'country' => $country]);
+         return view('duty.list', ['duties' => $duties[2]->getObjet()->getNom(),'country' => $country]);
     }
 
 
@@ -53,7 +53,7 @@ class DutyController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.92/
+     * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */

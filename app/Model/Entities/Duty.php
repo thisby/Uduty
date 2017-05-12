@@ -15,7 +15,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * Entity\Duty
  *
- * @ORM\Entity(repositoryClass="App\Repositories\duty\DutyRepository")
+ * @ORM\Entity(repositoryClass="App\Repositories\Duty\EloquentDutyRepository")
  * @ORM\Table(name="duty", indexes={@ORM\Index(name="fk_duty_objet1_idx", columns={"objet_id"})})
  */
 class Duty
@@ -76,7 +76,7 @@ class Duty
     /**
      * @ORM\OneToOne(targetEntity="User", mappedBy="duty")
      */
-    protected $user;
+//    protected $user;
 
     /**
      * @ORM\OneToOne(targetEntity="Objet", inversedBy="duty")
