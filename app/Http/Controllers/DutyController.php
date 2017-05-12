@@ -4,21 +4,42 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityRepository;
+
+use Doctrine\ORM\EntityManagerInterface;
+
+use app\Model\Entity\Duty;
 
 class DutyController extends Controller
 {
+
+    /**
+     * @var string
+     */
+    private $class = 'Entity\Trip';
+    /**
+     * @var EntityManager
+     */
+    private $em;       
+
+
+    public function __construct(EntityManager $em)
+    {
+        $this->em = $em;
+    }
 
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function list()
+    public function list($country)
     {
-        $repository = EntityManager::getRepository(Duty::class);
+
+         $repository = $this->em->getRepository($this->class);
+         $duties = $repository->getAll();
+         return view('duty.list', ['duties' => $duties[2]->getPays()->getNom(),'country' => $country]);
     }
-
-
 
 
     /**
@@ -32,7 +53,7 @@ class DutyController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new resource.92/
      *
      * @return \Illuminate\Http\Response
      */

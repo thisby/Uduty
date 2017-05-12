@@ -13,8 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Entity\User
- *
- * @ORM\Entity(repositoryClass="UserRepository")
+  * @ORM\Entity(repositoryClass="UserRepository")
  **/
 
  /* ORM\Table(name="`user`", indexes={@ORM\Index(name="fk_user_duty1_idx", columns={"duty_id", "duty_objet_id"}), @ORM\Index(name="fk_user_trip1_idx", columns={"trip_id"})})

@@ -15,7 +15,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * Entity\Trip
  *
- * @ORM\Entity(repositoryClass="TripRepository")
+ * @ORM\Entity(repositoryClass="App\Repositories\Trip\EloquentTripRepository")
  * @ORM\Table(name="trip", indexes={@ORM\Index(name="fk_trip_pays1_idx", columns={"pays_id"})})
  */
 class Trip
@@ -54,7 +54,7 @@ class Trip
     /**
      * @ORM\OneToOne(targetEntity="User", mappedBy="trip")
      */
-    protected $user;
+    //protected $user;
 
     /**
      * @ORM\OneToOne(targetEntity="Pays", inversedBy="trip")
@@ -235,7 +235,7 @@ class Trip
      * @param \Entity\Pay $pays
      * @return \Entity\Trip
      */
-    public function setPays(Pay $pays)
+    public function setPays(Pays $pays)
     {
         $this->pays = $pays;
 
@@ -245,11 +245,11 @@ class Trip
     /**
      * Get Pay entity (one to one).
      *
-     * @return \Entity\Pay
+     * @return \Entity\Pays
      */
-    public function getPay()
+    public function getPays()
     {
-        return $this->pay;
+        return $this->pays;
     }
 
     public function __sleep()

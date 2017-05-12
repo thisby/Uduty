@@ -71,17 +71,14 @@ GRANT ALL PRIVILEGES ON duty.* TO 'duty'@'%' IDENTIFIED BY 'duty' WITH GRANT OPT
 - duty son mot de passe
 
 //Table a partir de classes.php
-<<<<<<< Updated upstream
-=======
 php artisan doctrine:schema:create
 
 //update si modif
->>>>>>> Stashed changes
 php artisan doctrine:schema:update --force
 
 
 //Model Generation from DB
-php vendor/bin/doctrine orm:convert-mapping --from-database annotation app/Model/
+php artisan orm:convert-mapping --from-database annotation app/Model/
 
 //Git configuration login mdp
 git config --global user.name "thisby" 

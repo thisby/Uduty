@@ -15,7 +15,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * Entity\Duty
  *
- * @ORM\Entity(repositoryClass="DutyRepository")
+ * @ORM\Entity(repositoryClass="App\Repositories\duty\DutyRepository")
  * @ORM\Table(name="duty", indexes={@ORM\Index(name="fk_duty_objet1_idx", columns={"objet_id"})})
  */
 class Duty

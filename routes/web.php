@@ -15,7 +15,11 @@ Route::get('/', function () {
     return view('default');
 });
 
+<<<<<<< Updated upstream
 
 Route::get('duty/list/{country}', 'DutyController@list');
 
+=======
+Route::get('duty/list/{country}', 'DutyController@list');
+>>>>>>> Stashed changes
 
