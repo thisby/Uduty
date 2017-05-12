@@ -7,6 +7,20 @@ use Doctrine\ORM\EntityManager;
 
 class DutyController extends Controller
 {
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function list()
+    {
+        $repository = EntityManager::getRepository(Duty::class);
+    }
+
+
+
+
     /**
      * Display a listing of the resource.
      *
@@ -15,9 +29,6 @@ class DutyController extends Controller
     public function index()
     {
 
-         $em = GetEntityManager();
-         $duties = $em->getRepository('Entity/duty')->all();
-         return view('duty.list', ['duties' => $duties]);
     }
 
     /**

@@ -36,11 +36,15 @@ class User
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $email;
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $password_hash;    
 
     /**
-     * @ORM\Column(type="string", length=60, nullable=true)
+     * @ORM\Column(type="string", length=100, nullable=true)
      */
-    protected $password_hash;
+    protected $remember_token;
 
     /**
      * @ORM\Column(type="string", length=45, nullable=true)
@@ -157,6 +161,31 @@ class User
     public function getEmail()
     {
         return $this->email;
+    }
+
+
+
+    /**
+     * Set the value of remember_token .
+     *
+     * @param string $remember_token 
+     * @return \Entity\User
+     */
+    public function setRememberToken($remember_token)
+    {
+        $this->remember_token  = $remember_token ;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of remember_token .
+     *
+     * @return string
+     */
+    public function getRememberToken()
+    {
+        return $this->remember_token ;
     }
 
     /**
