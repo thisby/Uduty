@@ -97,3 +97,35 @@ User
 Trip
 Duty
 
+Conciergerie altermondialiste
+
+
+- 2 types d'utilisateur : l'acheteur et le voyageur (dutyou)
+-Home
+
+-Liste déroulante avec les pays
+
+-l'utilisateur choisit un pays, liste des duty par pays, occasion et possible de ramener.
+
+-filtre par région, prix
+
+-l'utilisateur choisit un duty, affichage du formulaire permettant de se mettre en contact avec le ?dutyou? ou d'ajouter le duty dans son panier
+
+-l'utilisateur peut a tout moment décider de payer
+	Q) Quid du pourcentage de la facon de se rémunérer
+	
+-l'utilisateur peut créer un voyage et ?spécifier les objets qu'il peut rapporter?
+
+-un potentiel acheteur peut contacter un dutyou afin de lui demander un duty situé dans le pays ou il voyage
+
+-Systeme de galleries d'objet aléatoire avec achat immédiat
+
+-Systeme de gamification
+
+
+
+
+
+
+
+
