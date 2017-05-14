@@ -1,9 +1,9 @@
 <?php
 namespace E;
-use app\Entity\Pays;
+use app\Entity\Countries;
 use Illuminate\Database\Seeder;
 
-class PaysTableSeeder extends Seeder {
+class CountriesTableSeeder extends Seeder {
  
 
      /**
@@ -17,7 +17,7 @@ class PaysTableSeeder extends Seeder {
 	 
 		for ($i = 0; $i < 100; $i++)
 		{
-		  $pays = Pays::create(array(
+		  $countries = Countries::create(array(
 		    `id` => $faker->unique(),
 			`nom` => $faker->nom,
 			`nom_court` => $faker->nom_court

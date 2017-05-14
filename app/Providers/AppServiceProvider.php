@@ -25,6 +25,7 @@ class AppServiceProvider extends ServiceProvider
     {
         if ($this->app->environment() == 'local') {
             $this->app->register('Kurt\Repoist\RepoistServiceProvider');
+            $this->app->register('Reliese\Coders\CodersServiceProvider');
         }
 
         $this->app->bind('App\Repositories\Trip\TripRepository', function($app)
@@ -35,6 +36,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind('App\Repositories\Duty\DutyRepository', function($app)
           {
             return new EloquentDutyRepository( new Duty );
-          });        
+          });       
+
     }
 }

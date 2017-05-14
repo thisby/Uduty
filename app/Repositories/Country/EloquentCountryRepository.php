@@ -10,11 +10,4 @@ class EloquentCountryRepository implements CountryRepository
 		return $countries;
     }
 
-    public function getCountriesByContinent($continentCode)
-    {
-        $query = \EntityManager::createQuery('SELECT c FROM Entity\Countries c WHERE c.continentCode = :continentCode');
-        $query->setParameter('continentCode', $continentCode);
-		$countries = $query->getResult(); // array of User objects);
-		return $countries;
-    }
 }

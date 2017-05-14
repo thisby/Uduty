@@ -4,7 +4,8 @@ return [
 
 	'sellObjects' => 'duty',
 	'list' => 'duty/list',
-	'view' => 'duty/view'
+	'view' => 'duty/view',
+	'companyName' => 'Uduty'
 ]
 
 ?>

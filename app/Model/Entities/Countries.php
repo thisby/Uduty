@@ -74,6 +74,42 @@ class Countries
     private $continentCode;
 
 
+    /**
+     * @ORM\OneToOne(targetEntity="Trip", mappedBy="countries")
+     */
+    protected $trip;
+
+
+
+    /**
+     * Set the value of countryId.
+     *
+     * @param integer $countryId
+     * @return \Entity\Continents
+     */
+    public function setCountryId($countryId)
+    {
+        $this->countryId = $countryId;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of countryId.
+     *
+     * @return integer
+     */
+    public function getCountryId()
+    {
+        return $this->countryId;
+    }
+
+
+
+
+
+
+
 
     /**
      * Set the value of code.
