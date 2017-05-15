@@ -75,12 +75,21 @@
 
 .duty.card
 {  
-  height:500px;
+  margin-bottom: 25px;
+}
+
+.price_block
+{
+	color:green;
+	font-weight: bold;
+	text-align: center;
 }
 
 .panel-body
 {
-  height:150px;
+  /*height:100px;*/
   overflow:hidden;
-  word-wrap: ellipsis;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin-bottom:10px;
 }

@@ -107,20 +107,28 @@
                       dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut.
                     </p>
                   </div>
-                  <div class="row" id="dutyContainer">
-
+                  <div id="dutyContainer">
+<!--<div class="row">-->
                    @foreach($duties as $duty)
                    <div class="col-md-4 duty card" data-country="{{$duty['countryId']}}" data-id="{{$duty['id']}}">          
                     <div class="panel panel-default">
-                      <div class="panel-heading"><h3>{{$duty['nom']}}</h3></div>
-                      <div class="panel-body">{{$duty['content']}}
+                      <div class="panel-heading">                        
+                        <h3 class="text-center">{{$duty['nom']}}</h3>
+                        <hr>
+                        <img src="/images/basket.png" />
+                      </div>
+                      <div class="panel-body">
+                        {{$duty['content']}}
+                        
                       </div>              
-                      <span class="price">{{$duty['prix']}}</span>
-                      <input type="button" class="duty add btn btn-lg" value="@lang('App.AddToBasket')" />
+                      <p class="price_block">
+                        @lang('App.localPrice')
+                        <span class="price">{{$duty['prix']}}</span></p>
+                      <input type="button" class="duty add btn btn-tiny pull-right" value="@lang('App.AddToBasket')" />
                     </div>
                   </div>
                   @endforeach
-
+<!--</div>-->
                 </div>
 
                 <hr>
@@ -180,12 +188,12 @@
       $(".country").click(function()
       {
         var countryCode = $(this).find('img').attr('data-countryid');
-        $(".duty[data-country='" + countryCode + "']").show();        
-        $(".duty:not(.duty[data-country='" + countryCode + "'])").hide();
+        $(".duty.card[data-country='" + countryCode + "']").show();        
+        $(".duty.card:not(.duty.card[data-country='" + countryCode + "'])").hide();
       });
 
 
-      $(".duty.add").click(function()
+      $(document).on('click','.duty.add',function()
       {
         var id = $(this).closest('.duty.card').attr('data-id');
         var prix = $(this).closest('.duty.card').find('.price').text();
@@ -197,7 +205,6 @@
         {
           alert(data);
           $('#wishes').text(++wishes);
-          //todo : increase shopping cart number elements
         })
       })
 

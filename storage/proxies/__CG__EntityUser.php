@@ -248,6 +248,28 @@ class User extends \Entity\User implements \Doctrine\ORM\Proxy\Proxy
     /**
      * {@inheritDoc}
      */
+    public function setRememberToken($remember_token)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRememberToken', [$remember_token]);
+
+        return parent::setRememberToken($remember_token);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getRememberToken()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRememberToken', []);
+
+        return parent::getRememberToken();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function setPasswordHash($password_hash)
     {
 

@@ -83,7 +83,6 @@ class DutyTableSeeder extends Seeder {
   {
   		$faker = Faker\Factory::create('fr_FR');
        
-        //$trips = (array)DB::table('trip')->select('id')->pluck('id')->all();
         $countries = (array)DB::table('countries')->select('country_id')->pluck('country_id')->all();    
         $objects = (array)DB::table('objet')->select('id')->pluck('id')->all();  
         $objects = $faker->shuffle($objects);

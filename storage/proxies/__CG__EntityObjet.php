@@ -248,23 +248,23 @@ class Objet extends \Entity\Objet implements \Doctrine\ORM\Proxy\Proxy
     /**
      * {@inheritDoc}
      */
-    public function setPaysId($paysId)
+    public function setCountriesId($countriesId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPaysId', [$paysId]);
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCountriesId', [$countriesId]);
 
-        return parent::setPaysId($paysId);
+        return parent::setCountriesId($countriesId);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function getPaysId()
+    public function getCountriesId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPaysId', []);
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCountriesId', []);
 
-        return parent::getPaysId();
+        return parent::getCountriesId();
     }
 
     /**

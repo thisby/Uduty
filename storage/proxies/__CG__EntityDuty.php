@@ -226,23 +226,23 @@ class Duty extends \Entity\Duty implements \Doctrine\ORM\Proxy\Proxy
     /**
      * {@inheritDoc}
      */
-    public function setPaysList($pays_list)
+    public function setCountriesList($countries_list)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPaysList', [$pays_list]);
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCountriesList', [$countries_list]);
 
-        return parent::setPaysList($pays_list);
+        return parent::setCountriesList($countries_list);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function getPaysList()
+    public function getCountriesList()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPaysList', []);
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCountriesList', []);
 
-        return parent::getPaysList();
+        return parent::getCountriesList();
     }
 
     /**

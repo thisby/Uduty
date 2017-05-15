@@ -52,9 +52,9 @@ class Objet
     protected $image;
 
     /**
-     * @ORM\OneToOne(targetEntity="Duty", inversedBy="objet")
+     * @ORM\OneToMany(targetEntity="Duty", mappedBy="objet")
      */
-    protected $duty;
+    protected $duties;
 
     public function __construct()
     {

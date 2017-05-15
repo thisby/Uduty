@@ -292,23 +292,23 @@ class Trip extends \Entity\Trip implements \Doctrine\ORM\Proxy\Proxy
     /**
      * {@inheritDoc}
      */
-    public function setPaysId($pays_id)
+    public function setCountriesId($countries_id)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPaysId', [$pays_id]);
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCountriesId', [$countries_id]);
 
-        return parent::setPaysId($pays_id);
+        return parent::setCountriesId($countries_id);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function getPaysId()
+    public function getCountriesId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPaysId', []);
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCountriesId', []);
 
-        return parent::getPaysId();
+        return parent::getCountriesId();
     }
 
     /**
@@ -336,23 +336,23 @@ class Trip extends \Entity\Trip implements \Doctrine\ORM\Proxy\Proxy
     /**
      * {@inheritDoc}
      */
-    public function setPays(\Entity\Pays $pays)
+    public function setCountries(\Entity\Countries $countries)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPays', [$pays]);
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCountries', [$countries]);
 
-        return parent::setPays($pays);
+        return parent::setCountries($countries);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function getPay()
+    public function getCountries()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPay', []);
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCountries', []);
 
-        return parent::getPay();
+        return parent::getCountries();
     }
 
 }
