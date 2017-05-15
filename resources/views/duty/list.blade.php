@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>{{config('constants.companyName')}} - {{ __('Default.slogan') }}</title>
-
+@extends('layouts.app')
+@section('content')
     <!-- Bootstrap -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/europe_flags/flags.css" rel="stylesheet">
@@ -18,69 +11,6 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-
-    <style>
-    body {
- padding-top:50px;
-}
-
-#masthead { 
- min-height:250px;
-}
-
-#masthead h1 {
- font-size: 30px;
- line-height: 1;
- padding-top:20px;
-}
-
-#masthead .well {
- margin-top:8%;
-}
-
-@media screen and (min-width: 768px) {
-  #masthead h1 {
-    font-size: 50px;
-  }
-}
-
-.navbar-bright {
- background-color:#111155;
- color:#fff;
-}
-
-.affix-top,.affix{
- position: static;
-}
-
-@media (min-width: 979px) {
-  #sidebar.affix-top {
-    position: static;
-    margin-top:30px;
-    width:228px;
-  }
-  
-  #sidebar.affix {
-    position: fixed;
-    top:70px;
-    width:228px;
-  }
-}
-
-#sidebar li.active {
-  border:0 #eee solid;
-  border-right-width:5px;
-}
-
-.duty.card
-{
-  height:250px;
-}
-    </style>
-
-
-
-  </head>
   <body>
   <nav class="navbar navbar-default navbar-fixed-top" role="banner"  style="display:none;">
   <div class="container">
@@ -242,29 +172,8 @@
 
     <script type="text/javascript">
     var duties = {!! json_encode($duties) !!};
-    var cardHtml;
-    var cardsHtml;
     $(function()
     {
-/*
-      $.get('/snippets/duty.card.php',function(html)
-      {
-          cardHtml = html;
-      });
-
-      cardsHtml = "";
-
-      for(i in duties)
-      {
-        var duty = duties[i];
-        $(cardHtml).find('h3').html(duty['nom']);
-        $(cardHtml).find('.panel-body').html(duty['content']);        
-        cardsHtml += $(cardHtml).html();
-      }
-
-*/
-
-
       $(".country").click(function()
       {
         var countryCode = $(this).find('img').attr('data-countryid');
@@ -279,4 +188,4 @@
     </script>
 
   </body>
-</html>
+@endsection
