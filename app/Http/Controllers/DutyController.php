@@ -9,6 +9,9 @@ use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\EntityManagerInterface;
 
 use app\Model\Entity\Duty;
+use Kris\LaravelFormBuilder\FormBuilder;
+use App\Forms\DutyForm;
+
 
 class DutyController extends Controller
 {
@@ -90,9 +93,14 @@ class DutyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(FormBuilder $formBuilder)
     {
-        //
+            $form = $formBuilder->create(DutyForm::class, [
+            'method' => 'POST',
+            'url' => route('duty.store')
+        ]);
+
+        return view('duty.create', compact('form'));
     }
 
     /**
@@ -101,9 +109,14 @@ class DutyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(FormBuilder $formBuilder)
     {
-        //
+        $form = $formBuilder->create(DutyForm::class);
+
+        if (!$form->isValid()) {
+            return redirect()->back()->withErrors($form->getErrors())->withInput();
+        }
+
     }
 
     /**
