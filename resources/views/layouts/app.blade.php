@@ -57,6 +57,10 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
+                        <p id="basket">
+                        <img src = "/images/basket.png" style="width:36px;"/>
+                        <span id="wishes">0</span>duties
+                        </p>
                         <!-- Authentication Links -->
                         @if (Auth::guest())
                             <li><a href="{{ route('login') }}">@lang('App.login')</a></li>

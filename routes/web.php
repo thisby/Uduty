@@ -18,3 +18,5 @@ Route::get('duty/list/{country}', 'DutyController@list');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource('shop', 'CartController', ['only' => ['index', 'store', 'update', 'destroy']]);

@@ -87,29 +87,10 @@ class DutyTableSeeder extends Seeder {
         $countries = (array)DB::table('countries')->select('country_id')->pluck('country_id')->all();    
         $objects = (array)DB::table('objet')->select('id')->pluck('id')->all();  
         $objects = $faker->shuffle($objects);
-
-        //print_r($objects);
-
-        //echo $objects[$faker->numberBetween($min = 0, $max = count($objects) -1)];
-
         $users = (array)DB::table('users')->pluck('nom')->all();
-        //->pluck('nom')->all();
-
-        //print_r($users);
 
         for ($i = 0; $i < 100; $i++)
         {
-/*
-			$d = [];
-	        for($j = 0;$j < $faker->numberBetween($min = 0, $max = 5);$j++)
-	        {
-	        	$row = $faker->randomElements($countries);
-				$d[] = $row[0];
-	        }
-
-	        $json = "{" . join(',',$d) . "}";
-*/
-
             DB::table('duty')->insert([
 	            'id' => $i,
 	            'objet_id' => $faker->randomElements($objects)[0],

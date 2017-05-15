@@ -43,10 +43,12 @@
   }
 }
 
+/*
 .navbar-bright {
  background-color:#111155;
  color:#fff;
 }
+*/
 
 .affix-top,.affix{
  position: static;
@@ -72,6 +74,13 @@
 }
 
 .duty.card
+{  
+  height:500px;
+}
+
+.panel-body
 {
-  height:250px;
+  height:150px;
+  overflow:hidden;
+  word-wrap: ellipsis;
 }

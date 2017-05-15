@@ -79,7 +79,7 @@ class Duty
 //    protected $user;
 
     /**
-     * @ORM\OneToOne(targetEntity="Objet", inversedBy="duty")
+     * @ORM\OneToOne(targetEntity="Objet", mappedBy="duty")
      * @ORM\JoinColumn(name="objet_id", referencedColumnName="id", nullable=false)
      */
     protected $objet;

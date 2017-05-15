@@ -49,7 +49,9 @@ class DutyController extends Controller
          {
             $duties[] = 
             array(
+                'id' => $duty->getId(),
                 'nom' => $duty->getObjet()->getNom(),
+                'prix' =>$duty->getObjet()->getLocalPrix(),
                 'countryId' => $duty->getCountriesList(),
                 'content' => $duty->getContenu()
             );

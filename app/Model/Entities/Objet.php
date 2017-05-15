@@ -52,7 +52,7 @@ class Objet
     protected $image;
 
     /**
-     * @ORM\OneToOne(targetEntity="Duty", mappedBy="objet")
+     * @ORM\OneToOne(targetEntity="Duty", inversedBy="objet")
      */
     protected $duty;
 
