@@ -15,8 +15,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * Entity\Trip
  *
- * @ORM\Entity(repositoryClass="TripRepository")
- * @ORM\Table(name="trip", indexes={@ORM\Index(name="fk_trip_pays1_idx", columns={"pays_id"})})
+ * @ORM\Entity(repositoryClass="App\Repositories\Trip\EloquentTripRepository")
+ * @ORM\Table(name="trip", indexes={@ORM\Index(name="fk_trip_countries1_idx", columns={"countries_id"})})
  */
 class Trip
 {
@@ -49,18 +49,18 @@ class Trip
     /**
      * @ORM\Column(type="integer")
      */
-    protected $pays_id;
+    protected $countries_id;
 
     /**
      * @ORM\OneToOne(targetEntity="User", mappedBy="trip")
      */
-    protected $user;
+    //protected $user;
 
     /**
-     * @ORM\OneToOne(targetEntity="Pays", inversedBy="trip")
-     * @ORM\JoinColumn(name="pays_id", referencedColumnName="id", nullable=false)
+     * @ORM\OneToOne(targetEntity="Countries", inversedBy="trip")
+     * @ORM\JoinColumn(name="countries_id", referencedColumnName="country_id", nullable=false)
      */
-    protected $pays;
+    protected $countries;
 
     public function __construct()
     {
@@ -183,26 +183,26 @@ class Trip
     }
 
     /**
-     * Set the value of pays_id.
+     * Set the value of countries_id.
      *
-     * @param integer $pays_id
+     * @param integer $countries_id
      * @return \Entity\Trip
      */
-    public function setPaysId($pays_id)
+    public function setCountriesId($countries_id)
     {
-        $this->pays_id = $pays_id;
+        $this->countries_id = $countries_id;
 
         return $this;
     }
 
     /**
-     * Get the value of pays_id.
+     * Get the value of countries_id.
      *
      * @return integer
      */
-    public function getPaysId()
+    public function getCountriesId()
     {
-        return $this->pays_id;
+        return $this->countries_id;
     }
 
     /**
@@ -232,12 +232,12 @@ class Trip
     /**
      * Set Pay entity (one to one).
      *
-     * @param \Entity\Pay $pays
+     * @param \Entity\Pay $countries
      * @return \Entity\Trip
      */
-    public function setPays(Pay $pays)
+    public function setCountries(Countries $countries)
     {
-        $this->pays = $pays;
+        $this->countries = $countries;
 
         return $this;
     }
@@ -245,15 +245,15 @@ class Trip
     /**
      * Get Pay entity (one to one).
      *
-     * @return \Entity\Pay
+     * @return \Entity\Countries
      */
-    public function getPay()
+    public function getCountries()
     {
-        return $this->pay;
+        return $this->countries;
     }
 
     public function __sleep()
     {
-        return array('id', 'transportId', 'userId', 'dateDepart', 'dateFin', 'pays_id');
+        return array('id', 'transportId', 'userId', 'dateDepart', 'dateFin', 'countries_id');
     }
 }

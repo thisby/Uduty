@@ -4,21 +4,73 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityRepository;
+
+use Doctrine\ORM\EntityManagerInterface;
+
+use app\Model\Entity\Duty;
 
 class DutyController extends Controller
 {
+
+    /**
+     * @var string
+     */
+    private $class = 'Entity\Duty';
+    /**
+     * @var EntityManager
+     */
+    private $em;       
+
+
+    public function __construct(EntityManager $em)
+    {
+        $this->em = $em;
+    }
 
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function list()
+    public function list($continentCode)
     {
-        $repository = EntityManager::getRepository(Duty::class);
+
+         $repository = $this->em->getRepository($this->class);
+         $dutiesByContinent = $repository->getDutiesByContinent($continentCode);
+
+         $repository = $this->em->getRepository('Entity\Countries');
+         $countriesByContinent = $repository->findByContinentCode($continentCode);
+
+
+         $duties = [];
+
+         foreach($dutiesByContinent as $duty)
+         {
+            $duties[] = 
+            array(
+                'nom' => $duty->getObjet()->getNom(),
+                'countryId' => $duty->getCountriesList(),
+                'content' => $duty->getContenu()
+            );
+         }
+
+         $countries = [];
+
+         foreach($countriesByContinent as $country)
+         {
+            $countries[] = 
+            array(
+                'nom' => $country->getName(),
+                'code' => $country->getCode(),
+                'countryId' => $country->getCountryId()
+            );
+         }
+
+         //dump($duties);
+
+         return view('duty.list', ['duties' => $duties,'countries' => $countries]);
     }
-
-
 
 
     /**

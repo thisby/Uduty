@@ -11,11 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('default');
-});
-
+Route::get('/', 'DefaultController@index');
 
 Route::get('duty/list/{country}', 'DutyController@list');
 
+Auth::routes();
 
+Route::get('/home', 'HomeController@index')->name('home');
