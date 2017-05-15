@@ -196,7 +196,7 @@
         $.post('/shop',{'id' : id , 'price' : prix,'_token' : token,'name' : name},function(data)
         {
           alert(data);
-          $('#wishes').text(wishes++);
+          $('#wishes').text(++wishes);
           //todo : increase shopping cart number elements
         })
       })

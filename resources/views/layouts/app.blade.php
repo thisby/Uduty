@@ -57,10 +57,6 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
-                        <p id="basket">
-                        <img src = "/images/basket.png" style="width:36px;"/>
-                        <span id="wishes">0</span>duties
-                        </p>
                         <!-- Authentication Links -->
                         @if (Auth::guest())
                             <li><a href="{{ route('login') }}">@lang('App.login')</a></li>
@@ -86,6 +82,8 @@
                                 </ul>
                             </li>
                         @endif
+                        <li id="basket"><a href="{{ route('basket') }}">
+                        <img src = "/images/basket.png" style="margin-top:-7px;width:25px;vertical-align: middle;"/> <span id="wishes">0</span> duties</a></li>
                     </ul>
                 </div>
             </div>

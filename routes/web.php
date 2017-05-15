@@ -20,3 +20,5 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('shop', 'CartController', ['only' => ['index', 'store', 'update', 'destroy']]);
+
+Route::get('basket',['as' => 'basket', 'uses' => 'CartController@index']);
