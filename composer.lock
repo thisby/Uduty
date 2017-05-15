@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "4af5f42f22205091ff76239d0b816d40",
+    "content-hash": "0767f9561854db258469406d9120a9df",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -682,6 +682,56 @@
             "time": "2017-03-29T16:04:15+00:00"
         },
         {
+            "name": "gloudemans/shoppingcart",
+            "version": "2.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Crinsane/LaravelShoppingcart.git",
+                "reference": "195cc095f53c66b60afaf0753295bc9c6b2773c3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Crinsane/LaravelShoppingcart/zipball/195cc095f53c66b60afaf0753295bc9c6b2773c3",
+                "reference": "195cc095f53c66b60afaf0753295bc9c6b2773c3",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/events": "5.1.*|5.2.*|5.3.*|5.4.*",
+                "illuminate/session": "5.1.*|5.2.*|5.3.*|5.4.*",
+                "illuminate/support": "5.1.*|5.2.*|5.3.*|5.4.*"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9.0",
+                "orchestra/testbench": "~3.0",
+                "phpunit/phpunit": "~4.0"
+            },
+            "suggest": {
+                "gloudemans/notify": "Simple flash notifications for Laravel"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Gloudemans\\Shoppingcart\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Rob Gloudemans",
+                    "email": "info@robgloudemans.nl"
+                }
+            ],
+            "description": "Laravel Shoppingcart",
+            "keywords": [
+                "laravel",
+                "shoppingcart"
+            ],
+            "time": "2017-01-25T09:56:35+00:00"
+        },
+        {
             "name": "ircmaxell/password-compat",
             "version": "v1.0.4",
             "source": {
@@ -930,16 +980,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.4.22",
+            "version": "v5.4.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "fc5c7a18644f231bcb8d02f4ec2f3a2517f5015d"
+                "reference": "ad82327705658dbf5f0ce72805caa950dfbe150d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/fc5c7a18644f231bcb8d02f4ec2f3a2517f5015d",
-                "reference": "fc5c7a18644f231bcb8d02f4ec2f3a2517f5015d",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/ad82327705658dbf5f0ce72805caa950dfbe150d",
+                "reference": "ad82327705658dbf5f0ce72805caa950dfbe150d",
                 "shasum": ""
             },
             "require": {
@@ -1055,7 +1105,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2017-05-08T21:45:45+00:00"
+            "time": "2017-05-11T20:10:35+00:00"
         },
         {
             "name": "laravel/tinker",
@@ -1521,16 +1571,16 @@
         },
         {
             "name": "psy/psysh",
-            "version": "v0.8.3",
+            "version": "v0.8.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "1dd4bbbc64d71e7ec075ffe82b42d9e096dc8d5e"
+                "reference": "17cf432bb80d9198df239b80d00a29155bd74d82"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/1dd4bbbc64d71e7ec075ffe82b42d9e096dc8d5e",
-                "reference": "1dd4bbbc64d71e7ec075ffe82b42d9e096dc8d5e",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/17cf432bb80d9198df239b80d00a29155bd74d82",
+                "reference": "17cf432bb80d9198df239b80d00a29155bd74d82",
                 "shasum": ""
             },
             "require": {
@@ -1590,7 +1640,7 @@
                 "interactive",
                 "shell"
             ],
-            "time": "2017-03-19T21:40:44+00:00"
+            "time": "2017-05-12T15:41:55+00:00"
         },
         {
             "name": "ramsey/uuid",
@@ -1673,6 +1723,58 @@
                 "uuid"
             ],
             "time": "2017-03-26T20:37:53+00:00"
+        },
+        {
+            "name": "reliese/laravel",
+            "version": "v0.0.13",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/reliese/laravel.git",
+                "reference": "10075c5f5e67efba18d781216ff5a0ffa3fc2d7f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/reliese/laravel/zipball/10075c5f5e67efba18d781216ff5a0ffa3fc2d7f",
+                "reference": "10075c5f5e67efba18d781216ff5a0ffa3fc2d7f",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/dbal": "~2.5",
+                "illuminate/console": "~5.1",
+                "illuminate/contracts": "~5.1",
+                "illuminate/database": "~5.1",
+                "illuminate/filesystem": "~5.1",
+                "illuminate/support": "~5.1",
+                "php": ">=5.6.4"
+            },
+            "require-dev": {
+                "fzaninotto/faker": "~1.4",
+                "mockery/mockery": "0.9.*",
+                "phpunit/phpunit": "~5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Reliese\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Cristian Llanos",
+                    "email": "cristianllanos@outlook.com"
+                }
+            ],
+            "description": "Reliese Components for Laravel Framework code generation.",
+            "homepage": "http://cristianllanos.com",
+            "keywords": [
+                "laravel",
+                "reliese"
+            ],
+            "time": "2017-02-04T15:50:39+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",

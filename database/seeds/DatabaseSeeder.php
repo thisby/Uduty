@@ -12,10 +12,10 @@ class DatabaseSeeder extends Seeder
     public function run()
     {    	
     	Eloquent::unguard();
-        //$this->call(PaysTableSeeder::class);
-        //$this->call(ObjectTableSeeder::class);
+        //$this->call(CountriesTableSeeder::class);
+        $this->call(ObjectTableSeeder::class);
         //$this->call(UserTableSeeder::class);        
-        //$this->call(TripTableSeeder::class);
+        $this->call(TripTableSeeder::class);
         $this->call(DutyTableSeeder::class);
 
     }
@@ -30,7 +30,7 @@ class UserTableSeeder extends Seeder {
 		$faker = Faker\Factory::create('fr_FR');
 		
 	 	$trips = (array)DB::table('trip')->select('id')->pluck('id')->all();
-	 	$pays = (array)DB::table('pays')->select('id')->pluck('id')->all();	 	
+	 	$countries = (array)DB::table('countries')->select('country_id')->pluck('country_id')->all();	 	
 		$objects = (array)DB::table('objet')->select('id')->pluck('id')->all();	 	
 		for ($i = 0; $i < 10; $i++)
 		{
@@ -44,7 +44,7 @@ class UserTableSeeder extends Seeder {
 			'salt' => $faker->word,
 			'password_hash' =>  Hash::make($faker->password),	
 			'adresse' => $faker->streetAddress,
-			'location_id' => $faker->randomElement($pays),
+			'location_id' => $faker->randomElement($countries),
 			'telephone' => $faker->phoneNumber
 		  ]);
 		}
@@ -54,28 +54,6 @@ class UserTableSeeder extends Seeder {
 }
 
 
-class PaysTableSeeder extends Seeder {
- 
-
-     /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-  public function run()
-  {
-	  	$faker = Faker\Factory::create();
-
-		for ($i = 0; $i < 100; $i++)
-		{
-		  DB::table('pays')->insert([
-		    'id' => $i,//$faker->unique($reset = true)->randomDigitNotNull,
-			'nom' => $faker->country,
-			'nom_court' => $faker->countryCode
-		  	]);
-		}
-   }
-}
 
 
 class TripTableSeeder extends Seeder {
@@ -83,12 +61,12 @@ class TripTableSeeder extends Seeder {
   public function run()
   {
   		$faker = Faker\Factory::create();
-  		$pays = DB::table('pays')->select('id')->pluck('id')->all();
+  		$countries = DB::table('countries')->select('country_id')->pluck('country_id')->all();
 		for ($i = 0; $i < 10; $i++)
 		{
 		  DB::table('trip')->insert([
 		    'id' => $i,//$faker->unique($reset = true)->randomDigitNotNull,
-			'pays_id' => $faker->randomElement($pays),
+			'countries_id' => $faker->randomElement($countries),
 			'transport_id' => $faker->randomDigitNotNull,
 			'user_id' => $faker->randomDigitNotNull,
 			'date_depart' => $faker->dateTimeThisCentury->format('Y-m-d H:i:s'),
@@ -106,37 +84,18 @@ class DutyTableSeeder extends Seeder {
   		$faker = Faker\Factory::create('fr_FR');
        
         //$trips = (array)DB::table('trip')->select('id')->pluck('id')->all();
-        $pays = (array)DB::table('pays')->select('id')->pluck('id')->all();    
+        $countries = (array)DB::table('countries')->select('country_id')->pluck('country_id')->all();    
         $objects = (array)DB::table('objet')->select('id')->pluck('id')->all();  
         $objects = $faker->shuffle($objects);
+        $users = (array)DB::table('users')->pluck('nom')->all();
 
-        //print_r($objects);
-
-        //echo $objects[$faker->numberBetween($min = 0, $max = count($objects) -1)];
-
-        $users = (array)DB::table('user')->pluck('nom')->all();
-        //->pluck('nom')->all();
-
-        //print_r($users);
-
-        for ($i = 0; $i < 10; $i++)
+        for ($i = 0; $i < 100; $i++)
         {
-
-			$d = [];
-	        for($i = 0;$i < $faker->numberBetween($min = 0, $max = 5);$i++)
-	        {
-	        	$row = $faker->randomElements($pays);
-				$d[] = $row[0];
-	        }
-
-	        $json = "{" . join(',',$d) . "}";
-
-
             DB::table('duty')->insert([
 	            'id' => $i,
 	            'objet_id' => $faker->randomElements($objects)[0],
 	            'contenu' => $faker->text,            
-	            'pays_list' => $json,
+	            'countries_list' => $faker->randomElements($countries)[0],
 	            'is_free' => $faker->randomElements([0,1])[0],
 	            'prix_minimum' => $faker->numerify('##'),
 	            'prix_maximum' => $faker->numerify('###'),
@@ -155,14 +114,14 @@ class ObjectTableSeeder extends Seeder {
   public function run()
   {
   		$faker = Faker\Factory::create();
-  		$pays = (array)DB::table('pays')->select('id')->pluck('id')->all();
+  		$countries = (array)DB::table('countries')->select('country_id')->pluck('country_id')->all();
 		for ($i = 0; $i < 100; $i++)
 		{
 		  DB::table('objet')->insert([
 		    'id' => $i,//$faker->unique($reset = true)->randomDigitNotNull,
 			'nom' => $faker->word,
 			'desc' => $faker->text($maxNbChars = 200),
-			'pays_id' => $faker->randomElement($pays),
+			'countries_id' => $faker->randomElement($countries),
 			'local_prix' => $faker->randomNumber(2),
 			'image' => $faker->regexify('[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}')
 		  	]);

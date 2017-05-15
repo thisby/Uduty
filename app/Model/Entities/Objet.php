@@ -39,7 +39,7 @@ class Objet
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
-    protected $paysId;
+    protected $countriesId;
 
     /**
      * @ORM\Column(type="string", length=10, nullable=true)
@@ -52,7 +52,7 @@ class Objet
     protected $image;
 
     /**
-     * @ORM\OneToOne(targetEntity="Duty", mappedBy="objet")
+     * @ORM\OneToOne(targetEntity="Duty", inversedBy="objet")
      */
     protected $duty;
 
@@ -131,26 +131,26 @@ class Objet
     }
 
     /**
-     * Set the value of paysId.
+     * Set the value of countriesId.
      *
-     * @param integer $paysId
+     * @param integer $countriesId
      * @return \Entity\Objet
      */
-    public function setPaysId($paysId)
+    public function setCountriesId($countriesId)
     {
-        $this->paysId = $paysId;
+        $this->countriesId = $countriesId;
 
         return $this;
     }
 
     /**
-     * Get the value of paysId.
+     * Get the value of countriesId.
      *
      * @return integer
      */
-    public function getPaysId()
+    public function getCountriesId()
     {
-        return $this->paysId;
+        return $this->countriesId;
     }
 
     /**
@@ -225,6 +225,6 @@ class Objet
 
     public function __sleep()
     {
-        return array('id', 'nom', 'desc', 'paysId', 'localPrix', 'image');
+        return array('id', 'nom', 'desc', 'countriesId', 'localPrix', 'image');
     }
 }

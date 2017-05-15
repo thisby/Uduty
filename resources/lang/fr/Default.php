@@ -1,8 +1,8 @@
 <?php
 
 return [
-
-	'slogan' => 'Où nous transportez vous ?',
+	
+	'slogan' => 'Conciergerie du monde',
 	'lang' => 'FR',
 	'localization' => 'fr_FR'
 	

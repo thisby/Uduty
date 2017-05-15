@@ -14,7 +14,7 @@ duty
 {	
 	objetId,
 	contenu,
-	paysList,
+	countriesList,
 	isFree,
 	prixMinimum,
 	prixMaximum,
@@ -25,14 +25,14 @@ duty
 
 trip
 {
-	pays,
+	countries,
 	transportId,
 	userId,
 	dateDebut,
 	dateFin
 }
 
-pays
+countries
 {
 	nom,
 	nom_court	
@@ -42,7 +42,7 @@ objet
 {
 	nom,
 	desc,
-	paysId,
+	countriesId,
 	image,
 	prix
 }
@@ -50,7 +50,7 @@ objet
 
 * Je voyage - [user - trip]
 * je cherche - [user - duty]
-* une gallerie - [ duty + objets typique du pays ]
+* une gallerie - [ duty + objets typique du countries ]
 
 Verifier les bases de données
 show databases;
@@ -77,32 +77,46 @@ php artisan doctrine:schema:create
 php artisan doctrine:schema:update --force
 
 
+//Generate proxies
+php artisan doctrine:generate:proxies
+
+
+//Scaffolding auth files
+php artisan make:auth
+
 //Model Generation from DB
-php artisan orm:convert-mapping --from-database annotation app/Model/
+php vendor/bin/doctrine orm:convert-mapping --from-database annotation app/Model/
 
 //Git configuration login mdp
 git config --global user.name "thisby" 
 git config --global user.email "bentaleb.youness@gmail.com" 
 git config --global user.password "git4This"
 
+//generate repository from db
+php artisan make:repository 
+
+
+
+
 //Architecture BDD
 
 
-Pays
+Countries
 Objet
 User
 Trip
 Duty
 
 Conciergerie altermondialiste
+Conciergerie du monde
 
 
 - 2 types d'utilisateur : l'acheteur et le voyageur (dutyou)
 -Home
 
--Liste déroulante avec les pays
+-Liste déroulante avec les countries
 
--l'utilisateur choisit un pays, liste des duty par pays, occasion et possible de ramener.
+-l'utilisateur choisit un countries, liste des duty par countries, occasion et possible de ramener.
 
 -filtre par région, prix
 
@@ -113,11 +127,13 @@ Conciergerie altermondialiste
 	
 -l'utilisateur peut créer un voyage et ?spécifier les objets qu'il peut rapporter?
 
--un potentiel acheteur peut contacter un dutyou afin de lui demander un duty situé dans le pays ou il voyage
+-un potentiel acheteur peut contacter un dutyou afin de lui demander un duty situé dans le countries ou il voyage
 
 -Systeme de galleries d'objet aléatoire avec achat immédiat
 
 -Systeme de gamification
+
+COULEUR : rose, vert,bleu,orange,jaune,marron
 
 
 

@@ -34,7 +34,7 @@ class Duty
     /**
      * @ORM\Column(type="text", nullable=true)
      */
-    protected $pays_list;
+    protected $countries_list;
 
     /**
      * @ORM\Column(type="smallint", nullable=true)
@@ -79,7 +79,7 @@ class Duty
 //    protected $user;
 
     /**
-     * @ORM\OneToOne(targetEntity="Objet", inversedBy="duty")
+     * @ORM\OneToOne(targetEntity="Objet", mappedBy="duty")
      * @ORM\JoinColumn(name="objet_id", referencedColumnName="id", nullable=false)
      */
     protected $objet;
@@ -136,26 +136,26 @@ class Duty
     }
 
     /**
-     * Set the value of pays_list.
+     * Set the value of countries_list.
      *
-     * @param string $pays_list
+     * @param string $countries_list
      * @return \Entity\Duty
      */
-    public function setPaysList($pays_list)
+    public function setCountriesList($countries_list)
     {
-        $this->pays_list = $pays_list;
+        $this->countries_list = $countries_list;
 
         return $this;
     }
 
     /**
-     * Get the value of pays_list.
+     * Get the value of countries_list.
      *
      * @return string
      */
-    public function getPaysList()
+    public function getCountriesList()
     {
-        return $this->pays_list;
+        return $this->countries_list;
     }
 
     /**
@@ -368,6 +368,6 @@ class Duty
 
     public function __sleep()
     {
-        return array('id', 'contenu', 'pays_list', 'is_free', 'prix_minimum', 'prix_maximum', 'ultimatum_date', 'image', 'user_id', 'objet_id');
+        return array('id', 'contenu', 'countries_list', 'is_free', 'prix_minimum', 'prix_maximum', 'ultimatum_date', 'image', 'user_id', 'objet_id');
     }
 }

@@ -14,7 +14,7 @@ return [
 	 * In this case:
 	 * 		app/
 	 */
-	'model_path' => '',
+	'model_path' => 'app/Models/Entities',
 
 	/**
 	 * Configure the naming convention you wish for your repositories.
