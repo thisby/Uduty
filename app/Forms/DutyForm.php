@@ -9,40 +9,42 @@ class DutyForm extends Form
     {
         $this
             ->add('contenu', 'textarea')
-            
-            ->add('countries_list', 'entity', [
+            /*
+            ->add('countries_list', 'entity', array(
                 'class' => 'Entity\Countries',
-                'property' => 'name'])
+                'property' => 'name'))
+            */
             
+
             /*
             ->add('countries_list','collection', [
-                'type' => 'choice',
+                'type' => 'select',
+                'property' => 'name',
                 'options' => [    // these are options for a single type
                     'class' => 'Entity\Countries',
-                    'label' => false
+                    'label' => true
                 ]
             ])
             */
-            ->add('c','select',['choices' => [ 1 => 'category-1', 2 => 'category-2']]);
-            /*
+            
+            
             ->add('is_free', 'checkbox')
             ->add('prix_minimum', 'text')
             ->add('prix_maximum', 'text')
-            ->add('ultimatum_date', 'text')
-            ->add('objet_id',  'entity', [
-                'class' => 'Entity\Objet',
-                'property' => 'nom'
-
+            ->add('ultimatum_date', 'text');
             /*
-            'query_builder' => function (App\Language $lang) {
-            // If query builder option is not provided, all data is fetched
-            return $lang->where('active', 1);
-            
-        }
-        
-        ]
+            ->add('objet_id',  'entity', 
+            array(
+                'class' => 'Entity\Objet',
+                'property' => 'nom',
 
-        );
-        */
+            
+                'query_builder' => function (\Entity\objet $objet) 
+                {
+                    // If query builder option is not provided, all data is fetched
+                    return $objet;        
+                }        
+            ))
+*/
     }
 }

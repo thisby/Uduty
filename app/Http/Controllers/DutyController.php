@@ -95,12 +95,21 @@ class DutyController extends Controller
      */
     public function create(FormBuilder $formBuilder)
     {
-            $form = $formBuilder->create(DutyForm::class, [
-            'method' => 'POST',
+            $countries_list = $repository = $this->em->getRepository('Entity\Countries')->findAll();
+
+            foreach($countries_list as $country)
+            {
+                $countries[] = array('name' => $country->getName(),'id' => $country->getCountryId());
+            }
+
+
+            $form = $formBuilder->create(DutyForm::class, [            
+            'method' => 'POST',            
             'url' => route('duty.store')
         ]);
 
-        return view('duty.create', compact('form'));
+
+        return view('duty.create', array('form' => $form,'countries' => $countries));
     }
 
     /**
