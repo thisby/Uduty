@@ -8,13 +8,16 @@ use Doctrine\ORM\EntityRepository;
 
 use Doctrine\ORM\EntityManagerInterface;
 
-use app\Model\Entity\Duty;
+use Entity;
 use Kris\LaravelFormBuilder\FormBuilder;
+use Kris\LaravelFormBuilder\FormBuilderTrait;
 use App\Forms\DutyForm;
 
 
 class DutyController extends Controller
 {
+
+    use FormBuilderTrait;
 
     /**
      * @var string
@@ -39,43 +42,43 @@ class DutyController extends Controller
     public function list($continentCode)
     {
 
-         $repository = $this->em->getRepository($this->class);
-         $dutiesByContinent = $repository->getDutiesByContinent($continentCode);
+       $repository = $this->em->getRepository($this->class);
+       $dutiesByContinent = $repository->getDutiesByContinent($continentCode);
 
-         $repository = $this->em->getRepository('Entity\Countries');
-         $countriesByContinent = $repository->findByContinentCode($continentCode);
+       $repository = $this->em->getRepository('Entity\Countries');
+       $countriesByContinent = $repository->findByContinentCode($continentCode);
 
 
-         $duties = [];
+       $duties = [];
 
-         foreach($dutiesByContinent as $duty)
-         {
-            $duties[] = 
-            array(
-                'id' => $duty->getId(),
-                'nom' => $duty->getObjet()->getNom(),
-                'prix' =>$duty->getObjet()->getLocalPrix(),
-                'countryId' => $duty->getCountriesList(),
-                'content' => $duty->getContenu()
+       foreach($dutiesByContinent as $duty)
+       {
+        $duties[] = 
+        array(
+            'id' => $duty->getId(),
+            'nom' => $duty->getObjet()->getNom(),
+            'prix' =>$duty->getObjet()->getLocalPrix(),
+            'countryId' => $duty->getCountriesList(),
+            'content' => $duty->getContenu()
             );
-         }
+    }
 
-         $countries = [];
+    $countries = [];
 
-         foreach($countriesByContinent as $country)
-         {
-            $countries[] = 
-            array(
-                'nom' => $country->getName(),
-                'code' => $country->getCode(),
-                'countryId' => $country->getCountryId()
+    foreach($countriesByContinent as $country)
+    {
+        $countries[] = 
+        array(
+            'nom' => $country->getName(),
+            'code' => $country->getCode(),
+            'countryId' => $country->getCountryId()
             );
-         }
+    }
 
          //dump($duties);
 
-         return view('duty.list', ['duties' => $duties,'countries' => $countries]);
-    }
+    return view('duty.list', ['duties' => $duties,'countries' => $countries]);
+}
 
 
     /**
@@ -95,18 +98,18 @@ class DutyController extends Controller
      */
     public function create(FormBuilder $formBuilder)
     {
-            $countries_list = $repository = $this->em->getRepository('Entity\Countries')->findAll();
+        $countries_list = $this->em->getRepository('Entity\Countries')->findAll();
 
-            foreach($countries_list as $country)
-            {
-                $countries[] = array('name' => $country->getName(),'id' => $country->getCountryId());
-            }
+        foreach($countries_list as $country)
+        {
+            $countries[] = array('name' => $country->getName(),'id' => $country->getCountryId());
+        }
 
 
-            $form = $formBuilder->create(DutyForm::class, [            
+        $form = $formBuilder->create(DutyForm::class, [            
             'method' => 'POST',            
             'url' => route('duty.store')
-        ]);
+            ]);
 
 
         return view('duty.create', array('form' => $form,'countries' => $countries));
@@ -118,14 +121,32 @@ class DutyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(FormBuilder $formBuilder)
+    public function store(Request $request)
     {
-        $form = $formBuilder->create(DutyForm::class);
+        $form = $this->form(DutyForm::class);
 
         if (!$form->isValid()) {
             return redirect()->back()->withErrors($form->getErrors())->withInput();
         }
 
+        //dump($request);
+        
+        $fieldValue = $form->getFieldValues();
+        $createdId = $this->em->getRepository('Entity\Duty')->getLastId();
+
+
+
+
+        $duty = new Entity\Duty();
+        $duty->setTitle($fieldValue['Title']);
+        $duty->setContenu($fieldValue['Description']);
+        $duty->setIsFree($fieldValue['Is_Free']);
+        $duty->setPrixMinimum($fieldValue['MinimumPrice']);
+        $duty->setPrixMaximum($fieldValue['MaximumPrice']);
+
+        dump($createdId);
+
+        //$this->em->persist($duty);
     }
 
     /**

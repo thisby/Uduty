@@ -8,8 +8,21 @@ return
 	'sellObjects' => 'duty',
 	'list' => 'duty/list',
 	'view' => 'duty/view',
-	'AddToBasket' => 'Add to basket'
 
+
+		'form' => array(
+			'save' => 'Fulfill my wish!'),
+
+
+		'duty' => array(
+			'AddToBasket' => 'Add to basket',
+			'maximumPrice' => 'Maximum Price',
+			'minimumPrice' => 'Minimum Price',
+			'localPrice' => 'Local Price Seen :',
+			'isFreeDuty' => 'Is it a voluntary service ?',
+			'countryAffected' => 'What country got the object you look for?',
+			'title' => 'Title'
+			)	
 ]
 
 ?>

@@ -35,4 +35,12 @@ class EloquentDutyRepository implements DutyRepository
         $duties = $dutiesQ->getResult();
 		return $duties;        
     }
+
+    public function getLastId()
+    {
+        $query = \EntityManager::createQuery('SELECT d FROM Entity\Duty d ORDER BY d.id DESC');
+        $query = $query->setMaxResults(1);
+        $duty = $query->getResult(); // array of User objects);
+        return $duty;
+    }
 }

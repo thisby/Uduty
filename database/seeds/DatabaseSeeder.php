@@ -100,7 +100,8 @@ class DutyTableSeeder extends Seeder {
 	            'prix_maximum' => $faker->numerify('###'),
 	            'ultimatum_date' => $faker->dateTimeThisCentury->format('Y-m-d H:i:s') ,
 	            'image' => $faker->asciify('********'),
-	            'user_id' => $faker->randomElements($users)[0]
+	            'user_id' => $faker->randomElements($users)[0],
+	            'title' => $faker->words(5,true)
           ]);
         }
   }

@@ -22,7 +22,7 @@ class Duty
 {
     /**
      * @ORM\Id
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer")     
      */
     protected $id;
 
@@ -30,6 +30,13 @@ class Duty
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $contenu;
+
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $title;
+
 
     /**
      * @ORM\Column(type="text", nullable=true)
@@ -133,6 +140,30 @@ class Duty
     public function getContenu()
     {
         return $this->contenu;
+    }
+
+
+/**
+     * Set the value of title.
+     *
+     * @param string $title
+     * @return \Entity\Duty
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of title.
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
     }
 
     /**

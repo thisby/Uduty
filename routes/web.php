@@ -20,7 +20,7 @@ Route::get('duty/create', [
     'as' => 'duty.create'
 ]);
 
-Route::post('duty', [
+Route::post('duty/store', [
     'uses' => 'DutyController@store',
     'as' => 'duty.store'
 ]);
