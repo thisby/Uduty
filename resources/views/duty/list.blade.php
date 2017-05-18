@@ -47,7 +47,7 @@
             <div class="row">
               <div class="col-md-7">
                 <h1>Uduty
-                  <p class="lead">Conciergerie du monde</p>
+                  <p class="lead">@lang('App.slogan')</p>
                 </h1>
               </div>
 
@@ -108,7 +108,6 @@
                     </p>
                   </div>
                   <div id="dutyContainer">
-<!--<div class="row">-->
                    @foreach($duties as $duty)
                    <div class="col-md-4 duty card" data-country="{{$duty['countryId']}}" data-id="{{$duty['id']}}">          
                     <div class="panel panel-default">
@@ -128,7 +127,6 @@
                     </div>
                   </div>
                   @endforeach
-<!--</div>-->
                 </div>
 
                 <hr>

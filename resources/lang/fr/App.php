@@ -21,11 +21,18 @@ return
 			'localPrice' => 'Prix local constaté :',
 			'isFreeDuty' => 'Est ce un service bénévole ?',
 			'countryAffected' => 'Dans quel pays se trouve l\'objet recherché ?',
+<<<<<<< Updated upstream
 			'title' => 'Titre'
 			),
 
 		'shop' => array(
 			'validate' => 'Valider mes achats'
+=======
+			'title' => 'Titre',
+			'ultimatumDate' => 'Date limite de réception d\'objet',
+			'objetReference' => 'Référence d\'objet'
+
+>>>>>>> Stashed changes
 			)
 ]
 

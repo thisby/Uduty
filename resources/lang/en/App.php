@@ -21,11 +21,17 @@ return
 			'localPrice' => 'Local Price Seen :',
 			'isFreeDuty' => 'Is it a voluntary service ?',
 			'countryAffected' => 'What country got the object you look for?',
+<<<<<<< Updated upstream
 			'title' => 'Title'
 			),
 
 		'shop' => array(
 			'validate' => 'Validate my boughts'
+=======
+			'title' => 'Title',
+			'ultimatumDate' => 'Deadline for receiving the object',
+			'objetReference' => 'Reference Object to assign'
+>>>>>>> Stashed changes
 			)	
 ]
 

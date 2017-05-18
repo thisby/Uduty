@@ -15,7 +15,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * Entity\Objet
  *
- * @ORM\Entity(repositoryClass="ObjetRepository")
+ * @ORM\Entity(repositoryClass="App\Repositories\Objet\EloquentObjetRepository")
  * @ORM\Table(name="objet")
  */
 class Objet

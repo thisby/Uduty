@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+<<<<<<< Updated upstream
 
 
     <!-- Bootstrap --> 
@@ -31,6 +32,12 @@
 
   </head>
   <body>
+=======
+    <link rel="stylesheet" href="/css/bootstrap-datetimepicker.min.css">
+</head>
+
+<body>
+>>>>>>> Stashed changes
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
@@ -92,7 +99,13 @@
     @yield('content')
 </div>
 
+<<<<<<< Updated upstream
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
+=======
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}"></script>
+@yield('scripts')
+>>>>>>> Stashed changes
 </body>
 </html>

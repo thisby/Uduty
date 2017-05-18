@@ -105,6 +105,14 @@ class DutyController extends Controller
             $countries[] = array('name' => $country->getName(),'id' => $country->getCountryId());
         }
 
+        $objects_list = $this->em->getRepository('Entity\Objet')->getAll();
+
+        foreach($objects_list as $object)
+        {
+            $objects[] = array('name' => $object->getNom(),'id' => $object->getId());
+        }
+
+        //dump($objects);
 
         $form = $formBuilder->create(DutyForm::class, [            
             'method' => 'POST',            
@@ -112,7 +120,7 @@ class DutyController extends Controller
             ]);
 
 
-        return view('duty.create', array('form' => $form,'countries' => $countries));
+        return view('duty.create', array('form' => $form,'countries' => $countries,'objects' => $objects));
     }
 
     /**
@@ -138,13 +146,16 @@ class DutyController extends Controller
 
 
         $duty = new Entity\Duty();
+        $duty->setId($createdId[0]->getId() + 1);
         $duty->setTitle($fieldValue['Title']);
         $duty->setContenu($fieldValue['Description']);
         $duty->setIsFree($fieldValue['Is_Free']);
         $duty->setPrixMinimum($fieldValue['MinimumPrice']);
         $duty->setPrixMaximum($fieldValue['MaximumPrice']);
+        //$duty->setObjetId($fieldValue['object']);
+        $duty->setCountriesList($fieldValue['country']);
 
-        dump($createdId);
+        dump($fieldValue);
 
         //$this->em->persist($duty);
     }
