@@ -112,4 +112,9 @@ class CartController extends Controller
         Cart::remove($id);
         return redirect('Duty')->withSuccessMessage('Item has been removed!');
     }
+
+    public function validate(Request $request)
+    {
+        
+    }
 }
