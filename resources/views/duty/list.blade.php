@@ -122,9 +122,9 @@
                         
                       </div>              
                       <p class="price_block">
-                        @lang('App.localPrice')
+                        @lang('App.duty.localPrice')
                         <span class="price">{{$duty['prix']}}</span></p>
-                      <input type="button" class="duty add btn btn-tiny pull-right" value="@lang('App.AddToBasket')" />
+                      <input type="button" class="duty add btn btn-tiny pull-right" value="@lang('App.duty.AddToBasket')" />
                     </div>
                   </div>
                   @endforeach

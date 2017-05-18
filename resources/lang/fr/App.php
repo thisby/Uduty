@@ -22,6 +22,10 @@ return
 			'isFreeDuty' => 'Est ce un service bénévole ?',
 			'countryAffected' => 'Dans quel pays se trouve l\'objet recherché ?',
 			'title' => 'Titre'
+			),
+
+		'shop' => array(
+			'validate' => 'Valider mes achats'
 			)
 ]
 

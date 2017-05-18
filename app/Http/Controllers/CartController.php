@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Kris\LaravelFormBuilder\FormBuilder;
+use App\Forms\ShopForm;
 
 class CartController extends Controller
 {
@@ -11,9 +13,33 @@ class CartController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(FormBuilder $formBuilder)
     {
-        return view('shop');
+
+        $form = $formBuilder->create(ShopForm::class, [            
+        'method' => 'POST',            
+        'url' => route('shop.index')
+        ]);
+
+        $items = [];
+        $boughts = \Cart::content();
+        dump($boughts);
+        foreach($boughts as $buy)
+        {
+
+            $bought = (object) [
+                    "id" => $buy->id,
+                    'qty'=> $buy->qty,                   
+                    'name'=> $buy->name,
+                    'price' =>$buy->price
+            ];
+            $items[] = $bought;
+
+        }
+
+        dump($items);
+
+        return view('shop/index',array('form' => $form,'items' =>$items));
     }
 
     /**

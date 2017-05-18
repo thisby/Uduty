@@ -22,6 +22,10 @@ return
 			'isFreeDuty' => 'Is it a voluntary service ?',
 			'countryAffected' => 'What country got the object you look for?',
 			'title' => 'Title'
+			),
+
+		'shop' => array(
+			'validate' => 'Validate my boughts'
 			)	
 ]
 

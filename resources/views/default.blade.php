@@ -4,7 +4,7 @@
       <form class="form-inline">
         <div class="form-group row" style="top:50%;position:absolute;left:45%;" >
           <div class="col-xm-2">
-            <label for="ex1">{{ @lang('App.slogan') }}</label>
+            <label for="ex1">@lang('App.slogan')</label>
             <select class="input-medium bfh-countries" data-country="@lang('Default.lang')" id="continent">
               @foreach($continents as $continent)
               <option value="{{$continent->getCode()}}">{{$continent->getName()}}</option>
