@@ -5,11 +5,7 @@
         <div class="form-group row" style="top:50%;position:absolute;left:45%;">
           <div class="col-xm-2">
             <label for="ex1">@lang('App.slogan')</label>
-<<<<<<< Updated upstream
-            <select class="input-medium bfh-countries" data-country="@lang('Default.lang')" id="continent">
-=======
             <select class="input-medium" data-country="@lang('App.lang')" id="continent">
->>>>>>> Stashed changes
               @foreach($continents as $continent)
               <option value="{{$continent->getCode()}}">{{$continent->getName()}}</option>
               @endforeach

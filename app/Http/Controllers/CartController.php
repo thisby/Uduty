@@ -113,8 +113,4 @@ class CartController extends Controller
         return redirect('Duty')->withSuccessMessage('Item has been removed!');
     }
 
-    public function validate(Request $request)
-    {
-        
-    }
 }
