@@ -199,7 +199,7 @@
         var name = $(this).closest('.duty.card').find("h3").text();
         var wishes = $('#wishes').text();
 
-        $.post('/shop',{'id' : id , 'price' : prix,'_token' : token,'name' : name},function(data)
+        $.post('/cart',{'id' : id , 'price' : prix,'_token' : token,'name' : name},function(data)
         {
           alert(data);
           $('#wishes').text(++wishes);

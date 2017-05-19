@@ -1,3 +1,7 @@
-- Creer un service permettant d'appeller des methodes sur le panier
--
+- remplacer les input hidden token par la metadatadonnée csrf_token
+- creer table user via migrate
+- truncate all tables
+- modifier code dbseed
+- ajouter clé userId dans duty et dans shop
+- relancer seeder
 

@@ -12,9 +12,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {    	
     	Eloquent::unguard();
-        //$this->call(CountriesTableSeeder::class);
         $this->call(ObjectTableSeeder::class);
-        //$this->call(UserTableSeeder::class);        
+        $this->call(UserTableSeeder::class);        
         $this->call(TripTableSeeder::class);
         $this->call(DutyTableSeeder::class);
 
@@ -35,17 +34,21 @@ class UserTableSeeder extends Seeder {
 		for ($i = 0; $i < 10; $i++)
 		{
 		  DB::table('users')->insert([
-			'nom' => $faker->lastName,
+			'name' => $faker->lastName,
 			//'duty_id' => $i,
 			//'duty_objet_id' => $faker->randomElement($objects),
 			//'trip_id' => $faker->randomElement($trips),
-			'prenom' => $faker->firstName,
+			//'prenom' => $faker->firstName,
 			'email' => $faker->safeEmail,
-			'salt' => $faker->word,
-			'password_hash' =>  Hash::make($faker->password),	
-			'adresse' => $faker->streetAddress,
-			'location_id' => $faker->randomElement($countries),
-			'telephone' => $faker->phoneNumber
+			//'salt' => $faker->word,
+			'password' =>  $faker->password,	
+			'remember_token' => $faker->sha256,
+			'created_at'    => $faker->dateTime(),
+			'updated_at' => $faker->dateTimeInInterval($startDate = '+ 1 days', $interval = '+ 5 days', $timezone = date_default_timezone_get())        
+
+			//'adresse' => $faker->streetAddress,
+			//'location_id' => $faker->randomElement($countries),
+			//'telephone' => $faker->phoneNumber
 		  ]);
 		}
 		
@@ -86,7 +89,7 @@ class DutyTableSeeder extends Seeder {
         $countries = (array)DB::table('countries')->select('country_id')->pluck('country_id')->all();    
         $objects = (array)DB::table('objet')->select('id')->pluck('id')->all();  
         $objects = $faker->shuffle($objects);
-        $users = (array)DB::table('users')->pluck('nom')->all();
+        $users = (array)DB::table('users')->pluck('email')->all();
 
         for ($i = 0; $i < 100; $i++)
         {

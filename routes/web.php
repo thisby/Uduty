@@ -10,8 +10,13 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
+
+
 
 Route::get('/', 'DefaultController@index');
+Route::get('/home', 'HomeController@index')->name('home');
+
 
 Route::get('duty/list/{country}', 'DutyController@list');
 
@@ -26,13 +31,12 @@ Route::post('duty/store', [
 ]);
 
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('cart', 'CartController', ['only' => ['index', 'store', 'update', 'destroy']]);
+
+Route::post('cart/qty','CartController@update')->name('qty');
 
 
 
-Route::resource('shop', 'CartController', ['only' => ['index', 'store', 'update', 'destroy']]);
-
-Route::get('shop/index',['as' => 'shop/index', 'uses' => 'CartController@index']);
+Route::get('shop/index',['as' => 'shop/index', 'uses' => 'ShopController@index']);
 
