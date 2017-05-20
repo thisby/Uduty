@@ -226,6 +226,28 @@ class Duty extends \Entity\Duty implements \Doctrine\ORM\Proxy\Proxy
     /**
      * {@inheritDoc}
      */
+    public function setTitle($title)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTitle', [$title]);
+
+        return parent::setTitle($title);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getTitle()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTitle', []);
+
+        return parent::getTitle();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function setCountriesList($countries_list)
     {
 

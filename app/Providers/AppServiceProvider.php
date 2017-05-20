@@ -35,10 +35,15 @@ class AppServiceProvider extends ServiceProvider
           {
             return new EloquentTripRepository( new Trip );
           });
-
+/*
         $this->app->bind('App\Repositories\Duty\DutyRepository', function($app)
           {
             return new EloquentDutyRepository( new Duty );
+          });   
+*/
+                  $this->app->bind('App\Repositories\Duties\DutiesRepository', function($app)
+          {
+            return new EloquentDutiesRepository( new Duties );
           });       
 
         $this->app->bind('App\Repositories\Objet\ObjetRepository', function($app)
