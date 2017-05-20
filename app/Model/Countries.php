@@ -73,6 +73,105 @@ class Countries
      */
     private $continentCode;
 
+   /**
+     * Set the value of countryId.
+     *
+     * @param integer $countryId
+     * @return \Entity\Continents
+     */
+    public function setCountryId($countryId)
+    {
+        $this->countryId = $countryId;
 
+        return $this;
+    }
+
+    /**
+     * Get the value of countryId.
+     *
+     * @return integer
+     */
+    public function getCountryId()
+    {
+        return $this->countryId;
+    }
+
+
+
+
+
+
+
+
+    /**
+     * Set the value of code.
+     *
+     * @param integer $code
+     * @return \Entity\Continents
+     */
+    public function setCode($code)
+    {
+        $this->code = $code;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of code.
+     *
+     * @return integer
+     */
+    public function getCode()
+    {
+        return $this->code;
+    }
+
+
+    /**
+     * Set the value of name.
+     *
+     * @param integer $name
+     * @return \Entity\Continents
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of name.
+     *
+     * @return integer
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+
+    /**
+     * Set the value of continentCode.
+     *
+     * @param integer $continentCode
+     * @return \Entity\Duty
+     */
+    public function setContinentCode($continentCode)
+    {
+        $this->continentCode = $continentCode;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of continentCode.
+     *
+     * @return integer
+     */
+    public function getContinentCode()
+    {
+        return $this->continentCode;
+    }
 }
 

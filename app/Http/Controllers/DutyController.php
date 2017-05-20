@@ -44,7 +44,7 @@ class DutyController extends Controller
 
        $repository = $this->em->getRepository($this->class);
 
-       dump($repository);
+       //dump($repository);
 
        $dutiesByContinent = $repository->getDutiesByContinent($continentCode);
 
@@ -56,12 +56,14 @@ class DutyController extends Controller
 
        foreach($dutiesByContinent as $duty)
        {
+
+        dump($duty->getObjet());
         $duties[] = 
         array(
             'id' => $duty->getId(),
-            'nom' => $duty->getObjet()->getNom(),
+            'nom' => $duty->getObjet()->getName(),
             'prix' =>$duty->getObjet()->getLocalPrix(),
-            'countryId' => $duty->getCountriesList(),
+            'countryId' => $duty->getCountry(),
             'content' => $duty->getContenu()
             );
     }

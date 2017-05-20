@@ -19,7 +19,7 @@ class EloquentObjetRepository implements ObjetRepository
 
 	public function getAll()
 	{
-		$query = \EntityManager::createQuery('SELECT o FROM Entity\Objet o');
+		$query = \EntityManager::createQuery('SELECT o FROM Entity\cObjet o');
 		$objects = $query->getResult(); // array of User objects);
 		return $objects;
 	}
