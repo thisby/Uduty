@@ -1,12 +1,8 @@
 <?php
-
-
-
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Duties
- *
  * @ORM\Table(name="duties", indexes={@ORM\Index(name="duties_objet_id_foreign", columns={"objet_id"}), @ORM\Index(name="duties_country_id_foreign", columns={"country_id"}), @ORM\Index(name="duties_user_id_foreign", columns={"user_id"})})
  * @ORM\Entity(repositoryClass="App\Repositories\Duties\EloquentDutiesRepository")
  */
@@ -88,7 +84,7 @@ class Duties
      *   @ORM\JoinColumn(name="objet_id", referencedColumnName="id")
      * })
      */
-    private $objet;
+    private $object;
 
     /**
      * @var \Users
@@ -103,6 +99,7 @@ class Duties
     public function __construct()
     {
         $this->users = new ArrayCollection();
+        $this->objects = new ArrayCollection();        
     }
 
     /**
@@ -337,31 +334,31 @@ class Duties
     }
 
     /**
-     * Set Objet entity (one to one).
+     * Set Object entity (one to one).
      *
-     * @param \Entity\Objet $objet
-     * @return \Entity\Duty
+     * @param Objects $object
+     * @return Duties
      */
-    public function setObjet(Objet $objet)
+    public function setObject($object)
     {
-        $this->objet = $objet;
+        $this->object = $object;
 
         return $this;
     }
 
     /**
-     * Get Objet entity (one to one).
+     * Get Object entity (one to one).
      *
-     * @return \Entity\Objet
+     * @return Objects
      */
-    public function getObjet()
+    public function getObject()
     {
-        return $this->objet;
+        return $this->object;
     }
 
     public function __sleep()
     {
-        return array('id', 'contenu', 'countries_list', 'is_free', 'prix_minimum', 'prix_maximum', 'ultimatum_date', 'image', 'user_id', 'objet');
+        return array('id', 'contenu', 'country', 'isFree', 'minPrice', 'maxPrice', 'ultimatumDate', 'image', 'user', 'object');
     }
 
 

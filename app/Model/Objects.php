@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Objects
- *
+ * @ORM\Entity(repositoryClass="App\Repositories\Objects\EloquentObjectsRepository")
  * @ORM\Table(name="objects", indexes={@ORM\Index(name="objects_country_id_foreign", columns={"country_id"})})
  * @ORM\Entity
  */
@@ -59,15 +59,11 @@ class Objects
      */
     private $country;
 
-    public function __construct()
-    {
-    }
-
     /**
      * Set the value of id.
      *
      * @param integer $id
-     * @return \Entity\Objet
+     * @return Object
      */
     public function setId($id)
     {
@@ -90,12 +86,12 @@ class Objects
      * Set the value of name.
      *
      * @param string $name
-     * @return \Entity\Objet
+     * @return Object
      */
     public function setName($name)
     {
         $this->name = $name;
-
+        dump('name : $name');
         return $this;
     }
 
@@ -113,7 +109,7 @@ class Objects
      * Set the value of desc.
      *
      * @param string $desc
-     * @return \Entity\Objet
+     * @return Object
      */
     public function setDesc($desc)
     {
@@ -136,7 +132,7 @@ class Objects
      * Set the value of country.
      *
      * @param integer $country
-     * @return \Entity\Objet
+     * @return Object
      */
     public function setCountry($country)
     {
@@ -159,7 +155,7 @@ class Objects
      * Set the value of localPrix.
      *
      * @param string $localPrix
-     * @return \Entity\Objet
+     * @return Object
      */
     public function setLocalPrix($localPrix)
     {
@@ -182,7 +178,7 @@ class Objects
      * Set the value of image.
      *
      * @param string $image
-     * @return \Entity\Objet
+     * @return Object
      */
     public function setImage($image)
     {
@@ -202,32 +198,32 @@ class Objects
     }
 
     /**
-     * Set Duty entity (one to one).
+     * Set Duties entity (one to one).
      *
-     * @param \Entity\Duty $duty
-     * @return \Entity\Objet
+     * @param Duties $duties
+     * @return Object
      */
-    public function setDuty(Duty $duty = null)
+    public function setDuties(Duties $duties = null)
     {
-        $duty->setObjet($this);
-        $this->duty = $duty;
+        $duties->setObject($this);
+        $this->duties = $duties;
 
         return $this;
     }
 
     /**
-     * Get Duty entity (one to one).
+     * Get Duties entity (one to one).
      *
-     * @return \Entity\Duty
+     * @return Duties
      */
-    public function getDuty()
+    public function getDuties()
     {
-        return $this->duty;
+        return $this->duties;
     }
 
     public function __sleep()
     {
-        return array('id', 'nom', 'desc', 'countriesId', 'localPrix', 'image');
+        return array('id', 'name', 'desc', 'country', 'localPrix', 'image');
     }
 }
 
