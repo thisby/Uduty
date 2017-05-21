@@ -8,7 +8,6 @@ use Doctrine\ORM\Mapping as ORM;
  * Continents
  *
  * @ORM\Table(name="continents")
- * @ORM\Entity(repositoryClass="App\Repositories\Continent\EloquentContinentRepository")
  * @ORM\Entity
  */
 class Continents
@@ -29,51 +28,6 @@ class Continents
      */
     private $name;
 
-    /**
-     * Set the value of code.
-     *
-     * @param integer $code
-     * @return \Entity\Continents
-     */
-    public function setCode($code)
-    {
-        $this->code = $code;
 
-        return $this;
-    }
-
-    /**
-     * Get the value of code.
-     *
-     * @return integer
-     */
-    public function getCode()
-    {
-        return $this->code;
-    }
-
-
-    /**
-     * Set the value of name.
-     *
-     * @param integer $name
-     * @return \Entity\Continents
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of name.
-     *
-     * @return integer
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
 }
 

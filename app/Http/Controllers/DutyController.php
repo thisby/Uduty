@@ -40,35 +40,34 @@ class DutyController extends Controller
     public function list($continentCode)
     {
 
-       $repository = $this->em->getRepository($this->class);
+     $repository = $this->em->getRepository($this->class);
 
        //dump($repository);
        //dump($this->em->getRepository('Objects')->getAll()[0]);
-       $dutiesByContinent = $repository->getDutiesByContinent($continentCode);
+     $dutiesByContinent = $repository->getDutiesByContinent($continentCode);
 
 
-       //dump(\Duties::findById(1));
+     //dump($repository->findById(0));
 
-       $repository = $this->em->getRepository('Countries');
-       $countriesByContinent = $repository->findByContinentCode($continentCode);
+     $repository = $this->em->getRepository('Countries');
+     $countriesByContinent = $repository->findByContinentCode($continentCode);
 
+     //dump(\Duties::find(1));
 
-       $duties = [];
-       dump($dutiesByContinent[0]);
+     $duties = [];
+     //dump($dutiesByContinent[0]);
        //dump($dutiesByContinent[0]->getObject());
        //dump($dutiesByContinent[0]->getCountry());
-       $repository = $this->em->getRepository('Objects');
+     $repository = $this->em->getRepository('Items');
 
-       foreach($dutiesByContinent as $duty)
-       {
-        $obj = Objects::findById($duty->getObject()->getId());
-        dump($obj);
+     foreach($dutiesByContinent as $duty)
+     {
         //dump($duty->getCountry());
         $duties[] = 
         array(
             'id' => $duty->getId(),
-            'nom' => $duty->getObject()->getName(),
-            'prix' =>$duty->getObject()->getLocalPrix(),
+            'nom' => $duty->getItem()->getName(),
+            'prix' =>$duty->getItem()->getLocalPrix(),
             'countryId' => $duty->getCountry(),
             'content' => $duty->getContenu()
             );

@@ -20,7 +20,7 @@ class EloquentObjectsRepository implements ObjectsRepository
 
     public function getAll()
     {
-    	$query = $this->em->createQuery('SELECT o FROM Objects o');
+    	$query = $this->em->createQuery('SELECT i FROM Model\Items i');
 		$objects = $query->getResult(); // array of User objects);
 		return $objects;
 }

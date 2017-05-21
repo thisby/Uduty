@@ -17,8 +17,8 @@ class CreateDutiesTable extends Migration
             Schema::create('duties', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->integer('objet_id')->unsigned();
-            $table->foreign('objet_id')->references('id')->on('objects');
+            $table->integer('item_id')->unsigned();
+            $table->foreign('item_id')->references('id')->on('items');
 
             $table->string('contenu',255);
 

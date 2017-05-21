@@ -12,7 +12,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {    	
     	Eloquent::unguard();
-    	$this->call(ObjectTableSeeder::class);
+    	$this->call(ItemTableSeeder::class);
     	$this->call(UserTableSeeder::class);        
     	$this->call(TripTableSeeder::class);
     	$this->call(DutyTableSeeder::class);
@@ -30,7 +30,7 @@ class UserTableSeeder extends Seeder {
 		
 		$trips = (array)DB::table('trips')->select('id')->pluck('id')->all();
 		$countries = (array)DB::table('countries')->select('country_id')->pluck('country_id')->all();	 	
-		$objects = (array)DB::table('objects')->select('id')->pluck('id')->all();	 	
+		$items = (array)DB::table('items')->select('id')->pluck('id')->all();	 	
 		if (DB::table('users')->where('email','admin@example.org')->count() == 0)
 		{
 			DB::table('users')->insert([
@@ -98,14 +98,14 @@ class DutyTableSeeder extends Seeder {
 		$faker = Faker\Factory::create('fr_FR');
 
 		$countries = (array)DB::table('countries')->select('country_id')->pluck('country_id')->all();    
-		$objects = (array)DB::table('objects')->select('id')->pluck('id')->all();  
-		$objects = $faker->shuffle($objects);
+		$items = (array)DB::table('items')->select('id')->pluck('id')->all();  
+		$items = $faker->shuffle($items);
 		$users = (array)DB::table('users')->pluck('id')->all();
 
 		for ($i = 0; $i < 100; $i++)
 		{
 			DB::table('duties')->insert([
-				'objet_id' => $faker->randomElements($objects)[0],
+				'item_id' => $faker->randomElements($items)[0],
 				'contenu' => $faker->text,            
 				'country_id' => $faker->randomElements($countries)[0],
 				'is_free' => $faker->randomElements([0,1])[0],
@@ -122,7 +122,7 @@ class DutyTableSeeder extends Seeder {
 }
 
 
-class ObjectTableSeeder extends Seeder {
+class ItemTableSeeder extends Seeder {
 
 	public function run()
 	{
@@ -130,7 +130,7 @@ class ObjectTableSeeder extends Seeder {
 		$countries = (array)DB::table('countries')->select('country_id')->pluck('country_id')->all();
 		for ($i = 0; $i < 100; $i++)
 		{
-			DB::table('objects')->insert([
+			DB::table('items')->insert([
 		    //'id' => $i,//$faker->unique($reset = true)->randomDigitNotNull,
 		    'name' => $faker->word,
 		    'desc' => $faker->text($maxNbChars = 200),

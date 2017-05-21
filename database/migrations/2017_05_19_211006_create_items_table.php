@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateObjetsTable extends Migration
+class CreateItemsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class CreateObjetsTable extends Migration
 
     public function up()
     {
-        Schema::create('objects', function (Blueprint $table) {
+        Schema::create('items', function (Blueprint $table) {
             $table->increments('id');
 
             $table->string('name',255);
@@ -36,6 +36,6 @@ class CreateObjetsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('objects');        
+        Schema::dropIfExists('items');        
     }
 }
