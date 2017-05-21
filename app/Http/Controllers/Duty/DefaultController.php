@@ -8,15 +8,15 @@ use Doctrine\ORM\EntityRepository;
 
 use Doctrine\ORM\EntityManagerInterface;
 
-use app\Model\Entity\Continents;
+use app\Model\Continents;
 
 class DefaultController extends Controller
 {
 
     /**
-     * @var string
+     * @var strings
      */
-    private $class = 'Entity\Continents';
+    private $class = 'Continents';
     /**
      * @var EntityManager
      */
@@ -37,7 +37,9 @@ class DefaultController extends Controller
     {
 
          $repository = $this->em->getRepository($this->class);
-         $continents = $repository->getAll();
+         $continents = $repository->findAll();
+         dump($continents);
+
          return view('default', ['continents' => $continents]);
     }
 }

@@ -1,10 +1,13 @@
 <?php
+
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Duties
- * @ORM\Table(name="duties", indexes={@ORM\Index(name="duties_objet_id_foreign", columns={"objet_id"}), @ORM\Index(name="duties_country_id_foreign", columns={"country_id"}), @ORM\Index(name="duties_user_id_foreign", columns={"user_id"})})
+ *
  * @ORM\Entity(repositoryClass="App\Repositories\Duties\EloquentDutiesRepository")
+ * @ORM\Table(name="duties", indexes={@ORM\Index(name="duties_objet_id_foreign", columns={"objet_id"}), @ORM\Index(name="duties_country_id_foreign", columns={"country_id"}), @ORM\Index(name="duties_user_id_foreign", columns={"user_id"})})
  */
 class Duties
 {
@@ -86,6 +89,7 @@ class Duties
      */
     private $object;
 
+
     /**
      * @var \Users
      *
@@ -99,7 +103,9 @@ class Duties
     public function __construct()
     {
         $this->users = new ArrayCollection();
-        $this->objects = new ArrayCollection();        
+        $this->countries = new ArrayCollection();
+        $this->duties = new ArrayCollection();
+
     }
 
     /**
@@ -196,26 +202,26 @@ class Duties
     }
 
     /**
-     * Set the value of is_free.
+     * Set the value of isFree.
      *
-     * @param integer $is_free
+     * @param integer $isFree
      * @return \Entity\Duty
      */
-    public function setIsFree($is_free)
+    public function setIsFree($isFree)
     {
-        $this->is_free = $is_free;
+        $this->isFree = $isFree;
 
         return $this;
     }
 
     /**
-     * Get the value of is_free.
+     * Get the value of isFree.
      *
      * @return integer
      */
     public function getIsFree()
     {
-        return $this->is_free;
+        return $this->isFree;
     }
 
     /**
@@ -265,26 +271,26 @@ class Duties
     }
 
     /**
-     * Set the value of ultimatum_date.
+     * Set the value of ultimatumDate.
      *
-     * @param string $ultimatum_date
+     * @param string $ultimatumDate
      * @return \Entity\Duty
      */
-    public function setUltimatumDate($ultimatum_date)
+    public function setUltimatumDate($ultimatumDate)
     {
-        $this->ultimatum_date = $ultimatum_date;
+        $this->ultimatumDate = $ultimatumDate;
 
         return $this;
     }
 
     /**
-     * Get the value of ultimatum_date.
+     * Get the value of ultimatumDate.
      *
      * @return string
      */
     public function getUltimatumDate()
     {
-        return $this->ultimatum_date;
+        return $this->ultimatumDate;
     }
 
     /**
@@ -341,6 +347,7 @@ class Duties
      */
     public function setObject($object)
     {
+        
         $this->object = $object;
 
         return $this;

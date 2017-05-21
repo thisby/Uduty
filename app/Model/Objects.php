@@ -1,14 +1,13 @@
 <?php
 
 
-
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Objects
+ *
  * @ORM\Entity(repositoryClass="App\Repositories\Objects\EloquentObjectsRepository")
  * @ORM\Table(name="objects", indexes={@ORM\Index(name="objects_country_id_foreign", columns={"country_id"})})
- * @ORM\Entity
  */
 class Objects
 {
@@ -59,6 +58,7 @@ class Objects
      */
     private $country;
 
+
     /**
      * Set the value of id.
      *
@@ -91,7 +91,6 @@ class Objects
     public function setName($name)
     {
         $this->name = $name;
-        dump('name : $name');
         return $this;
     }
 
@@ -197,33 +196,11 @@ class Objects
         return $this->image;
     }
 
-    /**
-     * Set Duties entity (one to one).
-     *
-     * @param Duties $duties
-     * @return Object
-     */
-    public function setDuties(Duties $duties = null)
-    {
-        $duties->setObject($this);
-        $this->duties = $duties;
-
-        return $this;
-    }
-
-    /**
-     * Get Duties entity (one to one).
-     *
-     * @return Duties
-     */
-    public function getDuties()
-    {
-        return $this->duties;
-    }
-
+/*
     public function __sleep()
     {
         return array('id', 'name', 'desc', 'country', 'localPrix', 'image');
     }
+*/
 }
 

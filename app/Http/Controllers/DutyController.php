@@ -8,11 +8,9 @@ use Doctrine\ORM\EntityRepository;
 
 use Doctrine\ORM\EntityManagerInterface;
 
-//use Entity;
 use Kris\LaravelFormBuilder\FormBuilder;
 use Kris\LaravelFormBuilder\FormBuilderTrait;
 use App\Forms\DutyForm;
-
 
 class DutyController extends Controller
 {
@@ -48,17 +46,23 @@ class DutyController extends Controller
        //dump($this->em->getRepository('Objects')->getAll()[0]);
        $dutiesByContinent = $repository->getDutiesByContinent($continentCode);
 
+
+       //dump(\Duties::findById(1));
+
        $repository = $this->em->getRepository('Countries');
        $countriesByContinent = $repository->findByContinentCode($continentCode);
 
 
        $duties = [];
-       dump($dutiesByContinent[0]->getObject());
-       dump($dutiesByContinent[0]->getCountry());
+       dump($dutiesByContinent[0]);
+       //dump($dutiesByContinent[0]->getObject());
+       //dump($dutiesByContinent[0]->getCountry());
+       $repository = $this->em->getRepository('Objects');
 
        foreach($dutiesByContinent as $duty)
        {
-
+        $obj = Objects::findById($duty->getObject()->getId());
+        dump($obj);
         //dump($duty->getCountry());
         $duties[] = 
         array(
