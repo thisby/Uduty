@@ -1,12 +1,13 @@
-<?php namespace App\Repositories\Objet;
+<?php namespace App\Repositories\Objects;
 
 use Doctrine\ORM\EntityManager;
 
-class EloquentObjetRepository implements ObjetRepository
+
+class EloquentObjectsRepository implements ObjectsRepository
 {
 
 
-	 /**
+    /**
      * @var EntityManager
      */
     private $em;       
@@ -14,13 +15,13 @@ class EloquentObjetRepository implements ObjetRepository
 
     public function __construct(EntityManager $em)
     {
-        $this->em = $em;
+    	$this->em = $em;
     }
 
-	public function getAll()
-	{
-		$query = \EntityManager::createQuery('SELECT o FROM Entity\cObjet o');
+    public function getAll()
+    {
+    	$query = $this->em->createQuery('SELECT i FROM Model\Items i');
 		$objects = $query->getResult(); // array of User objects);
 		return $objects;
-	}
+}
 }

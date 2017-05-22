@@ -8,11 +8,9 @@ use Doctrine\ORM\EntityRepository;
 
 use Doctrine\ORM\EntityManagerInterface;
 
-use Entity;
 use Kris\LaravelFormBuilder\FormBuilder;
 use Kris\LaravelFormBuilder\FormBuilderTrait;
 use App\Forms\DutyForm;
-
 
 class DutyController extends Controller
 {
@@ -22,7 +20,7 @@ class DutyController extends Controller
     /**
      * @var string
      */
-    private $class = 'Entity\Duty';
+    private $class = 'Duties';
     /**
      * @var EntityManager
      */
@@ -42,23 +40,35 @@ class DutyController extends Controller
     public function list($continentCode)
     {
 
-       $repository = $this->em->getRepository($this->class);
-       $dutiesByContinent = $repository->getDutiesByContinent($continentCode);
+     $repository = $this->em->getRepository($this->class);
 
-       $repository = $this->em->getRepository('Entity\Countries');
-       $countriesByContinent = $repository->findByContinentCode($continentCode);
+       //dump($repository);
+       //dump($this->em->getRepository('Objects')->getAll()[0]);
+     $dutiesByContinent = $repository->getDutiesByContinent($continentCode);
 
 
-       $duties = [];
+     //dump($repository->findById(0));
 
-       foreach($dutiesByContinent as $duty)
-       {
+     $repository = $this->em->getRepository('Countries');
+     $countriesByContinent = $repository->findByContinentCode($continentCode);
+
+     //dump(\Duties::find(1));
+
+     $duties = [];
+     //dump($dutiesByContinent[0]);
+       //dump($dutiesByContinent[0]->getObject());
+       //dump($dutiesByContinent[0]->getCountry());
+     $repository = $this->em->getRepository('Items');
+
+     foreach($dutiesByContinent as $duty)
+     {
+        //dump($duty->getCountry());
         $duties[] = 
         array(
             'id' => $duty->getId(),
-            'nom' => $duty->getObjet()->getNom(),
-            'prix' =>$duty->getObjet()->getLocalPrix(),
-            'countryId' => $duty->getCountriesList(),
+            'nom' => $duty->getItem()->getName(),
+            'prix' =>$duty->getItem()->getLocalPrix(),
+            'countryId' => $duty->getCountry(),
             'content' => $duty->getContenu()
             );
     }

@@ -12,7 +12,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {    	
     	Eloquent::unguard();
-    	$this->call(ObjectTableSeeder::class);
+    	$this->call(ItemTableSeeder::class);
     	$this->call(UserTableSeeder::class);        
     	$this->call(TripTableSeeder::class);
     	$this->call(DutyTableSeeder::class);
@@ -28,9 +28,9 @@ class UserTableSeeder extends Seeder {
 	{
 		$faker = Faker\Factory::create('fr_FR');
 		
-		$trips = (array)DB::table('trip')->select('id')->pluck('id')->all();
+		$trips = (array)DB::table('trips')->select('id')->pluck('id')->all();
 		$countries = (array)DB::table('countries')->select('country_id')->pluck('country_id')->all();	 	
-		$objects = (array)DB::table('objet')->select('id')->pluck('id')->all();	 	
+		$items = (array)DB::table('items')->select('id')->pluck('id')->all();	 	
 		if (DB::table('users')->where('email','admin@example.org')->count() == 0)
 		{
 			DB::table('users')->insert([
@@ -78,14 +78,14 @@ class TripTableSeeder extends Seeder {
 		$countries = DB::table('countries')->select('country_id')->pluck('country_id')->all();
 		for ($i = 0; $i < 10; $i++)
 		{
-			DB::table('trip')->insert([
-		    'id' => $i,//$faker->unique($reset = true)->randomDigitNotNull,
-		    'countries_id' => $faker->randomElement($countries),
-		    'transport_id' => $faker->randomDigitNotNull,
-		    'user_id' => $faker->randomDigitNotNull,
-		    'date_depart' => $faker->dateTimeThisCentury->format('Y-m-d H:i:s'),
-		    'date_fin' => $faker->dateTimeThisCentury->format('Y-m-d H:i:s')
-		    ]);
+			DB::table('trips')->insert([
+		    //'id' => $i,//$faker->unique($reset = true)->randomDigitNotNull,
+				'country_id' => $faker->randomElement($countries),
+				'transport_id' => $faker->randomDigitNotNull,
+				'user_id' => $faker->randomDigitNotNull,
+				'departure_date' => $faker->dateTimeThisCentury->format('Y-m-d H:i:s'),
+				'end_date' => $faker->dateTimeThisCentury->format('Y-m-d H:i:s')
+				]);
 		}
 	}
 
@@ -98,19 +98,20 @@ class DutyTableSeeder extends Seeder {
 		$faker = Faker\Factory::create('fr_FR');
 
 		$countries = (array)DB::table('countries')->select('country_id')->pluck('country_id')->all();    
-		$objects = (array)DB::table('objet')->select('id')->pluck('id')->all();  
-		$objects = $faker->shuffle($objects);
+		$items = (array)DB::table('items')->select('id')->pluck('id')->all();  
+		$items = $faker->shuffle($items);
+
 		$users = (array)DB::table('users')->pluck('id')->all();
 
 		for ($i = 0; $i < 100; $i++)
 		{
-			DB::table('duty')->insert([
-				'objet_id' => $faker->randomElements($objects)[0],
+			DB::table('duties')->insert([
+				'item_id' => $faker->randomElements($items)[0],
 				'contenu' => $faker->text,            
-				'countries_list' => $faker->randomElements($countries)[0],
+				'country_id' => $faker->randomElements($countries)[0],
 				'is_free' => $faker->randomElements([0,1])[0],
-				'prix_minimum' => $faker->numerify('##'),
-				'prix_maximum' => $faker->numerify('###'),
+				'min_price' => $faker->numerify('##'),
+				'max_price' => $faker->numerify('###'),
 				'ultimatum_date' => $faker->dateTimeThisCentury->format('Y-m-d H:i:s') ,
 				'image' => $faker->asciify('********'),
 				'user_id' => $faker->randomElements($users)[0],
@@ -122,7 +123,8 @@ class DutyTableSeeder extends Seeder {
 }
 
 
-class ObjectTableSeeder extends Seeder {
+
+class ItemTableSeeder extends Seeder {
 
 	public function run()
 	{
@@ -130,14 +132,14 @@ class ObjectTableSeeder extends Seeder {
 		$countries = (array)DB::table('countries')->select('country_id')->pluck('country_id')->all();
 		for ($i = 0; $i < 100; $i++)
 		{
-			DB::table('objet')->insert([
-		    'id' => $i,//$faker->unique($reset = true)->randomDigitNotNull,
-		    'nom' => $faker->word,
-		    'desc' => $faker->text($maxNbChars = 200),
-		    'countries_id' => $faker->randomElement($countries),
-		    'local_prix' => $faker->randomNumber(2),
-		    'image' => $faker->regexify('[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}')
-		    ]);
+			DB::table('items')->insert([
+		    //'id' => $i,//$faker->unique($reset = true)->randomDigitNotNull,
+				'name' => $faker->word,
+				'desc' => $faker->text($maxNbChars = 200),
+				'country_id' => $faker->randomElement($countries),
+				'local_prix' => $faker->randomNumber(2),
+				'image' => $faker->regexify('[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}')
+				]);
 		}
 	}
 

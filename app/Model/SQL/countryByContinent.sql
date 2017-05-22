@@ -30,7 +30,7 @@ INSERT INTO `continents` VALUES ('SA', 'South America');
 
 DROP TABLE IF EXISTS `countries`;
 CREATE TABLE `countries` (
-  `country_id` int(11) NOT NULL AUTO_INCREMENT,
+  `country_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `code` char(2) NOT NULL COMMENT 'Two-letter country code (ISO 3166-1 alpha-2)',
   `name` varchar(64) NOT NULL COMMENT 'English country name',
   `full_name` varchar(128) NOT NULL COMMENT 'Full English country name',

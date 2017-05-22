@@ -1,11 +1,11 @@
 <?php
 
-namespace Entity;
+
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Entity\Countries
+ * Countries
  *
  * @ORM\Table(name="countries", uniqueConstraints={@ORM\UniqueConstraint(name="idx_code", columns={"code"})}, indexes={@ORM\Index(name="idx_continent_code", columns={"continent_code"})})
  * @ORM\Entity
@@ -73,43 +73,28 @@ class Countries
      */
     private $continentCode;
 
-
     /**
-     * @ORM\OneToOne(targetEntity="Trip", mappedBy="countries")
-     */
-    protected $trip;
-
-
-
-    /**
-     * Set the value of countryId.
+     * Set the value of name.
      *
-     * @param integer $countryId
-     * @return \Entity\Continents
+     * @param integer $name
+     * @return \Entity\Duty
      */
-    public function setCountryId($countryId)
+    public function setName($name)
     {
-        $this->countryId = $countryId;
+        $this->name = $name;
 
         return $this;
     }
 
     /**
-     * Get the value of countryId.
+     * Get the value of name.
      *
      * @return integer
      */
-    public function getCountryId()
+    public function getName()
     {
-        return $this->countryId;
-    }
-
-
-
-
-
-
-
+        return $this->name;
+    }    
 
     /**
      * Set the value of code.
@@ -134,52 +119,27 @@ class Countries
         return $this->code;
     }
 
-
-    /**
-     * Set the value of name.
+   /**
+     * Set the value of countryId.
      *
-     * @param integer $name
+     * @param integer $countryId
      * @return \Entity\Continents
      */
-    public function setName($name)
+    public function setCountryId($countryId)
     {
-        $this->name = $name;
+        $this->countryId = $countryId;
 
         return $this;
     }
 
     /**
-     * Get the value of name.
+     * Get the value of countryId.
      *
      * @return integer
      */
-    public function getName()
+    public function getCountryId()
     {
-        return $this->name;
-    }
-
-
-    /**
-     * Set the value of continentCode.
-     *
-     * @param integer $continentCode
-     * @return \Entity\Duty
-     */
-    public function setContinentCode($continentCode)
-    {
-        $this->continentCode = $continentCode;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of continentCode.
-     *
-     * @return integer
-     */
-    public function getContinentCode()
-    {
-        return $this->continentCode;
+        return $this->countryId;
     }
 
 }
