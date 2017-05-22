@@ -15,6 +15,8 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="/css/bootstrap.css">    
     <link rel="stylesheet" href="/css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
     <!--<link rel="stylesheet" href="/css/bootstrap-glyphicons.css">-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
@@ -82,12 +84,14 @@
 </div>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="js/jquery.min.js"></script>
+<script src="/js/jquery.min.js"></script>
+<script src="{{ asset('js/jquery-ui.js') }}"></script>
+
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <!-- Latest compiled and minified JavaScript -->
-<script src="js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<script src="js/moment-with-locales.min.js"></script>
-<script src="js/bootstrap-datetimepicker.min.js"></script>
+<script src="/js/bootstrap.min.js" ></script>
+<script src="/js/moment-with-locales.min.js"></script>
+<script src="/js/bootstrap-datetimepicker.min.js"></script>
 
 <script src="{{ asset('js/app.js') }}"></script>
 @yield('scripts')

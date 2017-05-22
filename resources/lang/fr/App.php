@@ -26,7 +26,9 @@ return
 	),
 
 'shop' => array(
-	'validate' => 'Valider mes achats')
+	'validate' => 'Valider mes achats',
+	'deleteConfirmation' => 'Etes vous sur?'
+	)
 	]
 
 	?>

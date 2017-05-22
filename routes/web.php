@@ -39,4 +39,6 @@ Route::post('cart/qty','CartController@update')->name('qty');
 
 
 Route::get('shop/index',['as' => 'shop/index', 'uses' => 'ShopController@index']);
+Route::post('shop/store',['as' => 'shop.store', 'uses' => 'ShopController@store']);
+
 

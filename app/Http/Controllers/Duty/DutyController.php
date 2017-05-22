@@ -109,14 +109,14 @@ class DutyController extends Controller
      */
     public function create(FormBuilder $formBuilder)
     {
-        $countries_list = $this->em->getRepository('Entity\Countries')->findAll();
+        $countries_list = $this->em->getRepository('Countries')->findAll();
 
         foreach($countries_list as $country)
         {
             $countries[] = array('name' => $country->getName(),'id' => $country->getCountryId());
         }
 
-        $objects_list = $this->em->getRepository('Entity\Objet')->getAll();
+        $objects_list = $this->em->getRepository('Items')->getAll();
 
         foreach($objects_list as $object)
         {
@@ -151,7 +151,7 @@ class DutyController extends Controller
         //dump($request);
         
         $fieldValue = $form->getFieldValues();
-        $createdId = $this->em->getRepository('Entity\Duty')->getLastId();
+        $createdId = $this->em->getRepository('Duties')->getLastId();
 
 
 

@@ -20,9 +20,7 @@
 						<td><input type='text' value="{{$item->qty}}" class="quantity"/></td>
 						<td>{{$item->price}}</td>
 						<td>
-							<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-							<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+							<span class="glyphicon glyphicon-remove remove" aria-hidden="true"></span>
 						</td>
 					</tr>	
 					@endforeach		
@@ -33,16 +31,32 @@
 	</div>
 	@endsection
 	@section('scripts')
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="{{ asset('js/jquery-ui.js') }}"></script>
 	<script>
-		$(".quantity").on('change',function(){
 
-			var id = $(this).closest('tr').attr('data-id');
-	        var token = $('#token').val();
-			$.post('{{Route("qty")}}',{'quantity':this.value,'id':id,'_token' : token,function(r)
-			{
-				alert(r);
-			}
-		});
+		$(function()
+		{
+			$(".quantity").spinner({min: 0});
+
+
+			$(".quantity").on('change',function(){
+
+				var id = $(this).closest('tr').attr('data-id');
+		        var token = $('#token').val();
+				$.post('{{Route("qty")}}',{'quantity':this.value,'id':id,'_token' : token},function(r)
+				{
+					alert(r);
+				});
+			})
+
+			$(".remove").on('click',function(){
+				if (confirm("@lang('App.shop.deleteConfirmation')"))
+					$(this).closest('tr').remove();
+
+			})		
 		})
+
+
 	</script>
 	@endsection

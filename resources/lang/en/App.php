@@ -27,7 +27,8 @@ return
 	),
 
 'shop' => array(
-	'validate' => 'Validate my boughts'
+	'validate' => 'Validate my boughts',
+	'deleteConfirmation' => 'Are you sure ?'
 	)	
 ]
 

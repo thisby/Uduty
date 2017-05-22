@@ -14,7 +14,7 @@ class CreateShopsTable extends Migration
     public function up()
     {
         Schema::create('shop', function(Blueprint $table) {
-            $table->increments('shopId');
+            $table->increments('id');
             $table->integer('duty_id')->unsigned();
             $table->foreign('duty_id')->references('id')->on('duties');
             $table->integer('qty');

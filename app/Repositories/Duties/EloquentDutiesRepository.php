@@ -2,8 +2,7 @@
 
 use Doctrine\ORM\EntityManager;
 
-
-class EloquentDutiesRepository implements DutiesRepository
+class EloquentDutiesRepository implements DutiesRepository 
 {
     
     /**

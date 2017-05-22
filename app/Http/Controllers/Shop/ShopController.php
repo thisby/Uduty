@@ -5,9 +5,26 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Kris\LaravelFormBuilder\FormBuilder;
 use App\Forms\ShopForm;
+use Doctrine\ORM\EntityManager;
 
 class ShopController extends Controller
 {
+
+    private $em;   
+
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct(EntityManager $em)
+    {
+        //$this->middleware('auth');
+        $this->em = $em;
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +34,7 @@ class ShopController extends Controller
     {
         $form = $formBuilder->create(ShopForm::class, [            
             'method' => 'POST',            
-            'url' => route('shop/index')
+            'url' => route('shop.store')
             ]);
 
         $items = [];
@@ -28,6 +45,7 @@ class ShopController extends Controller
 
             $bought = (object) [
             "id" => $buy->rowId,
+            "dutyId" => $buy->id,
             'qty'=> $buy->qty,                   
             'name'=> $buy->name,
             'price' =>$buy->price
@@ -58,7 +76,23 @@ class ShopController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $boughts = \Cart::content();
+        $me = \Auth::user();
+        $shopLines = [];
+        foreach($boughts as $buy)
+        {
+            $shopLine = new \Shop();
+            $shopLine->setDuty($this->em->find('Duties',$buy->id));
+            $shopLine->setQty($buy->qty);
+            $shopLine->setUser($this->em->find('Users',$me->id));
+            $shopLines[] = $shopLine;
+            
+            $this->em->persist($shopLine);
+            $this->em->flush();
+            
+        }
+
+        return view('shop/store',array('shopLines' => $shopLines));
     }
 
     /**

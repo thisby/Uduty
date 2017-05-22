@@ -52,7 +52,7 @@ class Trip
     /**
      * @var \Countries
      *
-     * @ORM\ManyToOne(targetEntity="Entity\Countries")
+     * @ORM\ManyToOne(targetEntity="Countries")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="countries_id", referencedColumnName="country_id")
      * })
