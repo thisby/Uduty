@@ -55,9 +55,7 @@ class DutyController extends Controller
      //dump(\Duties::find(1));
 
      $duties = [];
-     dump($dutiesByContinent[0]);
-       //dump($dutiesByContinent[0]->getObject());
-       //dump($dutiesByContinent[0]->getCountry());
+
      $repository = $this->em->getRepository('Items');
 
      foreach($dutiesByContinent as $duty)
@@ -68,10 +66,13 @@ class DutyController extends Controller
             'id' => $duty->getId(),
             'nom' => $duty->getItem()->getName(),
             'prix' =>$duty->getItem()->getLocalPrix(),
-            'countryId' => $duty->getCountry(),
+            'countryId' => $duty->getCountry()->getCountryId(),
             'content' => $duty->getContenu()
             );
     }
+
+    dump($duties[0]);
+
 
     $countries = [];
 
@@ -84,8 +85,8 @@ class DutyController extends Controller
             'countryId' => $country->getCountryId()
             );
     }
-
-         //dump($duties);
+    
+    //dump($countries);
 
     return view('duty.list', ['duties' => $duties,'countries' => $countries]);
 }

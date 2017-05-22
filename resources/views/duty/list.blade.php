@@ -82,104 +82,38 @@
 
             <!--right-->
             <div class="col-md-9">
-              <div style="display:none;">
-                <h2 id="sec0">Content</h2>
-                <p>
-                  At Bootply we like to build simple Bootstrap templates that utilize the code Bootstap CSS without a lot of customization. Sure you can 
-                  find a lot of Bootstrap themes and inspiration, but these templates tend to be heavy on customization.</p>
-
-                  <hr>
-                  <p>
-                    Rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae 
-                    dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia cor magni dolores 
-                    eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, 
-                    sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. 
-                    Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut.              
-                    Rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae 
-                    dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia cor magni dolores 
-                    eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, 
-                    sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. 
-                    Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut!</p>
-
-                    <h2 id="sec1">Content</h2>
-                    <p>
-                      Rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae 
-                      dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut.
-                    </p>
+              <div id="dutyContainer">
+               @foreach($duties as $duty)
+               <div class="col-md-4 duty card" data-country="{{$duty['countryId']}}" data-id="{{$duty['id']}}">          
+                <div class="panel panel-default">
+                  <div class="panel-heading">                        
+                    <h3 class="text-center">{{$duty['nom']}}</h3>
+                    <hr>
+                    <img src="/images/basket.png" />
                   </div>
-                  <div id="dutyContainer">
-                   @foreach($duties as $duty)
-                   <div class="col-md-4 duty card" data-country="{{$duty['countryId']}}" data-id="{{$duty['id']}}">          
-                    <div class="panel panel-default">
-                      <div class="panel-heading">                        
-                        <h3 class="text-center">{{$duty['nom']}}</h3>
-                        <hr>
-                        <img src="/images/basket.png" />
-                      </div>
-                      <div class="panel-body">
-                        {{$duty['content']}}
-                        
-                      </div>              
-                      <p class="price_block">
-                        @lang('App.duty.localPrice')
-                        <span class="price">{{$duty['prix']}}</span></p>
-                      <input type="button" class="duty add btn btn-tiny pull-right" value="@lang('App.duty.AddToBasket')" />
-                    </div>
+                  <div class="panel-body">
+                    {{$duty['content']}}
+
+                  </div>              
+                  <p class="price_block">
+                    @lang('App.duty.localPrice')
+                    <span class="price">{{$duty['prix']}}</span></p>
+                    <input type="button" class="duty add btn btn-tiny pull-right" value="@lang('App.duty.AddToBasket')" />
                   </div>
-                  @endforeach
                 </div>
+                @endforeach
+              </div>
 
-                <hr>
-                <div style="display:none;">
-                  <h2 id="sec2">Section 2</h2>
-                  <p>
-                    Rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae 
-                    dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia cor magni dolores 
-                    eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, 
-                    sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. 
-                    Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut!
-                  </p>
-                  <div class="row">
-                    <div class="col-md-4"><img src="//placehold.it/300x300" class="img-responsive"></div>
-                    <div class="col-md-4"><img src="//placehold.it/300x300" class="img-responsive"></div>
-                    <div class="col-md-4"><img src="//placehold.it/300x300" class="img-responsive"></div>
-                  </div>
+              <hr>
+            </div><!--/right-->
+          </div><!--/row-->
+        </div><!--/container-->
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <!--<script src="/js/bootstrap.min.js"></script>-->
 
-                  <hr>
-
-                  <h2 id="sec3">Section 3</h2>
-                  <p>
-                    Images are responsive sed @mdo but sum are more fun peratis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, 
-                    totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae 
-                    dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia cor magni dolores 
-                    eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, 
-                    sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. 
-                    Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut..</p>
-                    <p>
-                      Fos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, 
-                      sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. 
-                      Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut..</p>
-
-
-                      <h2 id="sec4">Section 4</h2>
-                      <p>
-                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, 
-                        totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae 
-                        dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia cor magni dolores 
-                        eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, 
-                        sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. 
-                        Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut.</p>
-                      </div>
-
-                    </div><!--/right-->
-                  </div><!--/row-->
-                </div><!--/container-->
-                <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-                <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-                <!-- Include all compiled plugins (below), or include individual files as needed -->
-                <!--<script src="/js/bootstrap.min.js"></script>-->
-
-                <script type="text/javascript">
+        <script type="text/javascript">
     //var duties = {!! json_encode($duties) !!};
     $(function()
     {
