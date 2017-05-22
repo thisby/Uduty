@@ -71,7 +71,7 @@ class DutyController extends Controller
             );
     }
 
-    dump($duties[0]);
+    //dump($duties[0]);
 
 
     $countries = [];

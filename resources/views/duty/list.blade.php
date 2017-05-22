@@ -108,11 +108,7 @@
             </div><!--/right-->
           </div><!--/row-->
         </div><!--/container-->
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <!--<script src="/js/bootstrap.min.js"></script>-->
-
+        @section('scripts')
         <script type="text/javascript">
     //var duties = {!! json_encode($duties) !!};
     $(function()
@@ -143,7 +139,7 @@
     })
 
 
-  </script>
-
-</body>
-@endsection
+    </script>
+    @endsection
+  </body>
+  @endsection
