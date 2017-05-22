@@ -28,6 +28,50 @@ class Continents
      */
     private $name;
 
+    /**
+     * Set the value of name.
+     *
+     * @param integer $name
+     * @return \Entity\Duty
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
 
+        return $this;
+    }
+
+    /**
+     * Get the value of name.
+     *
+     * @return integer
+     */
+    public function getName()
+    {
+        return $this->name;
+    }    
+
+    /**
+     * Set the value of code.
+     *
+     * @param integer $code
+     * @return \Entity\Continents
+     */
+    public function setCode($code)
+    {
+        $this->code = $code;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of code.
+     *
+     * @return integer
+     */
+    public function getCode()
+    {
+        return $this->code;
+    }
 }
 

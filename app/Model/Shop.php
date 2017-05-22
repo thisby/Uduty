@@ -31,7 +31,7 @@ class Shop
     /**
      * @var \Duty
      *
-     * @ORM\ManyToOne(targetEntity="Duty")
+     * @ORM\ManyToOne(targetEntity="Duties")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="dutyId", referencedColumnName="id")
      * })

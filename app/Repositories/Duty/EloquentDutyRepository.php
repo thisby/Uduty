@@ -30,7 +30,7 @@ class EloquentDutyRepository implements DutyRepository
     //get all duties located in country based on continent code
     public function getDutiesByContinent($continentCode)
     {
-        $dutiesQ = \EntityManager::createQuery('SELECT d FROM Entity\Duty d JOIN Entity\Countries c WITH c.countryId = d.countries_list WHERE c.continentCode = :continentCode');
+        $dutiesQ = \EntityManager::createQuery('SELECT d FROM duties d JOIN Countries c WITH c.countryId = d.countries_list WHERE c.continentCode = :continentCode')->all();
 		$dutiesQ->setParameter('continentCode', $continentCode);
         $duties = $dutiesQ->getResult();
 		return $duties;        

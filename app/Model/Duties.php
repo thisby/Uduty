@@ -83,7 +83,7 @@ class Duties
     /**
      * @var \Items
      *
-     * @ORM\ManyToOne(targetEntity="Items")
+     * @ORM\ManyToOne(targetEntity="Items",fetch="EAGER")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="item_id", referencedColumnName="id")
      * })
@@ -99,6 +99,9 @@ class Duties
      * })
      */
     private $user;
+
+
+
 
 
     /**
@@ -130,12 +133,12 @@ class Duties
      * @param integer $item
      * @return \Entity\Duty
      */
-    public function setItem($item)
-    {
-        $this->item = $item;
+        public function setItem($item)
+        {
+            $this->item = $item;
 
-        return $this;
-    }
+            return $this;
+        }
 
     /**
      * Get the value of item.
@@ -153,12 +156,12 @@ class Duties
      * @param string $country
      * @return \Entity\Duty
      */
-    public function setCountry($country)
-    {
-        $this->country = $country;
+        public function setCountry($country)
+        {
+            $this->country = $country;
 
-        return $this;
-    }
+            return $this;
+        }
 
     /**
      * Get the value of country.

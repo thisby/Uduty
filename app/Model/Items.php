@@ -60,6 +60,18 @@ class Items
     private $country;
 
     /**
+     * One item has Many duties.
+     * @ORM\OneToMany(targetEntity="Duties", mappedBy="item")
+     */
+    protected $duties;
+    
+
+    public function __construct() {
+        $this->duties = new ArrayCollection();
+    }
+
+
+    /**
      * Set the value of name.
      *
      * @param integer $name

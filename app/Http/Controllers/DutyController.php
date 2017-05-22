@@ -55,7 +55,7 @@ class DutyController extends Controller
      //dump(\Duties::find(1));
 
      $duties = [];
-     //dump($dutiesByContinent[0]);
+     dump($dutiesByContinent[0]);
        //dump($dutiesByContinent[0]->getObject());
        //dump($dutiesByContinent[0]->getCountry());
      $repository = $this->em->getRepository('Items');

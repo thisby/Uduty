@@ -32,6 +32,7 @@ class EloquentDutiesRepository implements DutiesRepository
     {
         $dutiesQ = \EntityManager::createQuery('SELECT d FROM duties d JOIN countries c WITH c.countryId = d.country WHERE c.continentCode = :continentCode');
 		$dutiesQ->setParameter('continentCode', $continentCode);
+        $dutiesQ->setFetchMode('duties', 'item', 3);        
         $duties = $dutiesQ->getResult();
 		return $duties;        
     }
