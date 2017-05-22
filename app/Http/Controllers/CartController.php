@@ -60,7 +60,7 @@ class CartController extends Controller
     public function store(Request $request)
     {
         $cardItem = \Cart::add($request->id, $request->name, 1, $request->price);
-        $cardAssociation = \Cart::associate($cardItem->rowId,'Entity\Duty');
+        $cardAssociation = \Cart::associate($cardItem->rowId,'Duties');
 
         return 'Item was added to your cart!';
         //return redirect('Duty')->withSuccessMessage('Item was added to your cart!');
