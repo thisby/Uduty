@@ -11,8 +11,12 @@
     <title>{{ config('app.name')}} - @lang('App.slogan')</title>
 
     <!-- Styles -->
+
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="/css/bootstrap.css">    
     <link rel="stylesheet" href="/css/bootstrap-datetimepicker.min.css">
+    <!--<link rel="stylesheet" href="/css/bootstrap-glyphicons.css">-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 
 <body>

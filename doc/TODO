@@ -1,3 +1,2 @@
-- Creer un service permettant d'appeller des methodes sur le panier
--
+- remplacer les input hidden token par la metadatadonnée csrf_token
 

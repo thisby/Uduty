@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Kris\LaravelFormBuilder\FormBuilder;
+use App\Forms\ShopForm;
 
-class CartController extends Controller
+class ShopController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,10 +15,9 @@ class CartController extends Controller
      */
     public function index(FormBuilder $formBuilder)
     {
-
         $form = $formBuilder->create(ShopForm::class, [            
             'method' => 'POST',            
-            'url' => route('shop.index')
+            'url' => route('shop/index')
             ]);
 
         $items = [];
@@ -27,13 +27,12 @@ class CartController extends Controller
         {
 
             $bought = (object) [
-            "id" => $buy->id,
+            "id" => $buy->rowId,
             'qty'=> $buy->qty,                   
             'name'=> $buy->name,
             'price' =>$buy->price
             ];
             $items[] = $bought;
-
         }
 
         //dump($items);
@@ -48,7 +47,7 @@ class CartController extends Controller
      */
     public function create()
     {
-
+        //
     }
 
     /**
@@ -59,11 +58,7 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        $cardItem = \Cart::add($request->id, $request->name, 1, $request->price);
-        $cardAssociation = \Cart::associate($cardItem->rowId,'Entity\Duty');
-
-        return 'Item was added to your cart!';
-        //return redirect('Duty')->withSuccessMessage('Item was added to your cart!');
+        //
     }
 
     /**
@@ -95,29 +90,10 @@ class CartController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
-        if ($request->ajax()) {
-            $id = $request->id;
-            // Validation on max quantity
-            $validator = \Validator::make($request->all(), [
-                'quantity' => 'required|numeric|between:1,10'
-                ]);
 
-            if ($validator->fails()) {
-                session()->flash('error_message', 'Error on update item');
-                return response()->json(['success' => false]);
-            }
-
-            \Cart::update($id, $request->quantity);
-            session()->flash('success_message', '');
-
-            return response()->json(['success' => true]);
-        } else {
-            return view('errors.503');
-        }
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -126,8 +102,6 @@ class CartController extends Controller
      */
     public function destroy($id)
     {
-        \Cart::remove($id);
-        return redirect('Duty')->withSuccessMessage('Item has been removed!');
+        //
     }
-
 }
