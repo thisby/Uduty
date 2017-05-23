@@ -74,9 +74,11 @@
             <!--left-->
             <div class="col-md-3" id="leftCol">
               <ul class="nav nav-stacked" id="sidebar">
+                <div style="display: none">
                 @foreach($countries as $country)
                 <li class="country"><img src="blank.gif" class="flag flag-{{$country['code']}}" data-countryId="{{$country['countryId']}}"/>{{$country['nom']}}</li>
                 @endforeach
+                </div>
               </ul>
             </div><!--/left-->
 
@@ -111,8 +113,24 @@
         @section('scripts')
         <script type="text/javascript">
     //var duties = {!! json_encode($duties) !!};
+    var countries = {!! json_encode($countries) !!};
     $(function()
     {
+
+//<li class="country"><img src="blank.gif" class="flag flag-{{$country['code']}}" data-countryId="{{$country['countryId']}}"/>{{$country['nom']}}</li>
+
+
+      $(countries).each(function(îndex,item){
+        var li = document.createElement("li").text(item.nom);    
+
+        var img = (li).createElement('img');
+        img = img.addClass(item.flagClass);
+        img = img.attr('src','blank.gif');
+        img = img.attr('data-countryid',item.countryId);
+
+        $("#sidebar").append(li); 
+      })
+
       $(".country").click(function()
       {
         var countryCode = $(this).find('img').attr('data-countryid');

@@ -6,7 +6,4 @@ interface DutiesRepository
 {
     
     public function getAll();
-
-    public function findOneBy();
-
 }

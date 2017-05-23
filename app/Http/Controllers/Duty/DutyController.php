@@ -78,11 +78,13 @@ class DutyController extends Controller
 
     foreach($countriesByContinent as $country)
     {
+        $code = $country->getCode();
         $countries[] = 
         array(
             'nom' => $country->getName(),
-            'code' => $country->getCode(),
-            'countryId' => $country->getCountryId()
+            'code' => $code,
+            'countryId' => $country->getCountryId(),
+            'flagClass' => 'flag flag'.$code
             );
     }
     
