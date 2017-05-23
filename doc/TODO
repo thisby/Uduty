@@ -1,2 +1,6 @@
 - remplacer les input hidden token par la metadatadonnée csrf_token
+- MAJ du panier en fonction des quantités
+- corriger le bug des pays
+- Formulaire création duty
+- Formulaire création voyage
 

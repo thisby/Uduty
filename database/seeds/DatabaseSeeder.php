@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
     	$this->call(UserTableSeeder::class);        
     	$this->call(TripTableSeeder::class);
     	$this->call(DutyTableSeeder::class);
+    	$this->call(ShopTableSeeder::class);
 
     }
 }
@@ -28,9 +29,9 @@ class UserTableSeeder extends Seeder {
 	{
 		$faker = Faker\Factory::create('fr_FR');
 		
-		$trips = (array)DB::table('trips')->select('id')->pluck('id')->all();
-		$countries = (array)DB::table('countries')->select('country_id')->pluck('country_id')->all();	 	
-		$items = (array)DB::table('items')->select('id')->pluck('id')->all();	 	
+		$trips = (array)DB::table('trips')->pluck('id')->all();
+		$countries = (array)DB::table('countries')->pluck('country_id')->all();	 	
+		$items = (array)DB::table('items')->pluck('id')->all();	 	
 		if (DB::table('users')->where('email','admin@example.org')->count() == 0)
 		{
 			DB::table('users')->insert([
@@ -75,7 +76,7 @@ class TripTableSeeder extends Seeder {
 	public function run()
 	{
 		$faker = Faker\Factory::create();
-		$countries = DB::table('countries')->select('country_id')->pluck('country_id')->all();
+		$countries = DB::table('countries')->pluck('country_id')->all();
 		for ($i = 0; $i < 10; $i++)
 		{
 			DB::table('trips')->insert([
@@ -97,8 +98,8 @@ class DutyTableSeeder extends Seeder {
 	{
 		$faker = Faker\Factory::create('fr_FR');
 
-		$countries = (array)DB::table('countries')->select('country_id')->pluck('country_id')->all();    
-		$items = (array)DB::table('items')->select('id')->pluck('id')->all();  
+		$countries = (array)DB::table('countries')->pluck('country_id')->all();    
+		$items = (array)DB::table('items')->pluck('id')->all();  
 		$items = $faker->shuffle($items);
 
 		$users = (array)DB::table('users')->pluck('id')->all();
@@ -129,7 +130,7 @@ class ItemTableSeeder extends Seeder {
 	public function run()
 	{
 		$faker = Faker\Factory::create();
-		$countries = (array)DB::table('countries')->select('country_id')->pluck('country_id')->all();
+		$countries = (array)DB::table('countries')->pluck('country_id')->all();
 		for ($i = 0; $i < 100; $i++)
 		{
 			DB::table('items')->insert([
@@ -143,4 +144,23 @@ class ItemTableSeeder extends Seeder {
 		}
 	}
 
+}
+
+class ShopTableSeeder extends Seeder{
+	public function run()
+	{
+		$faker = Faker\Factory::create();
+		$duties = (array)DB::table('duties')->pluck('id')->all();
+		$users = (array)DB::table('users')->pluck('id')->all();
+
+		for ($i = 0; $i < 100; $i++)
+		{
+			DB::table('shop')->insert([
+		    //'id' => $i,//$faker->unique($reset = true)->randomDigitNotNull,
+				'duty_id' => $faker->randomElement($duties),
+				'qty' => $faker->randomNumber(2),
+				'user_id' => $faker->randomElement($users)
+				]);
+		}
+	}
 }
