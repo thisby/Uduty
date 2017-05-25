@@ -6,9 +6,8 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Items
- *
+ * @ORM\Entity(repositoryClass="App\Repositories\Items\EloquentItemsRepository")
  * @ORM\Table(name="items", indexes={@ORM\Index(name="items_country_id_foreign", columns={"country_id"})})
- * @ORM\Entity
  */
 class Items
 {
@@ -68,6 +67,31 @@ class Items
 
     public function __construct() {
         $this->duties = new ArrayCollection();
+    }
+
+
+
+    /**
+     * Set the value of id.
+     *
+     * @param integer $id
+     * @return \Entity\Duty
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of id.
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 
 

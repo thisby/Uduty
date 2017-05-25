@@ -17,6 +17,7 @@ return
 'duty' => array(
 	'AddToBasket' => 'Ajouter au panier',
 	'maximumPrice' => 'Prix maximum',
+	'title' => 'Titre',
 	'minimumPrice' => 'Prix minimum',
 	'localPrice' => 'Prix local constaté :',
 	'isFreeDuty' => 'Est ce un service bénévole ?',

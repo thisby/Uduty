@@ -2,7 +2,7 @@
 @section('content')
 <!-- Bootstrap -->
 <!--<link href="/css/bootstrap.min.css" rel="stylesheet">-->
-<link href="/css/europe_flags/flags.css" rel="stylesheet">
+<link href="/css/flags/{{$continentCode}}/flags.css" rel="stylesheet">
 
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -74,9 +74,9 @@
             <!--left-->
             <div class="col-md-3" id="leftCol">
               <ul class="nav nav-stacked" id="sidebar">
-                <div style="display: none">
+                <div>
                 @foreach($countries as $country)
-                <li class="country"><img src="blank.gif" class="flag flag-{{$country['code']}}" data-countryId="{{$country['countryId']}}"/>{{$country['nom']}}</li>
+                <li class="country"><img src="/images/blank.gif" class="flag flag-{{$country['code']}}" data-countryId="{{$country['countryId']}}"/>{{$country['nom']}}</li>
                 @endforeach
                 </div>
               </ul>
@@ -121,14 +121,7 @@
 
 
       $(countries).each(function(îndex,item){
-        var li = document.createElement("li").text(item.nom);    
-
-        var img = (li).createElement('img');
-        img = img.addClass(item.flagClass);
-        img = img.attr('src','blank.gif');
-        img = img.attr('data-countryid',item.countryId);
-
-        $("#sidebar").append(li); 
+//        $("#sidebar div").append("<li class='country'><span class='" + item.flagClass + "'></span>" + item.nom + "</li>"); 
       })
 
       $(".country").click(function()

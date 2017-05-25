@@ -47,8 +47,6 @@ class DutyController extends Controller
      $dutiesByContinent = $repository->getDutiesByContinent($continentCode);
 
 
-     //dump($repository->findById(0));
-
      $repository = $this->em->getRepository('Countries');
      $countriesByContinent = $repository->findByContinentCode($continentCode);
 
@@ -78,19 +76,19 @@ class DutyController extends Controller
 
     foreach($countriesByContinent as $country)
     {
-        $code = $country->getCode();
+        $code = strtolower($country->getCode());
         $countries[] = 
         array(
             'nom' => $country->getName(),
             'code' => $code,
             'countryId' => $country->getCountryId(),
-            'flagClass' => 'flag flag'.$code
+            'flagClass' => 'flag flag-'.$code
             );
     }
     
     //dump($countries);
 
-    return view('duty.list', ['duties' => $duties,'countries' => $countries]);
+    return view('duty.list', ['duties' => $duties,'countries' => $countries,'continentCode' => $continentCode]);
 }
 
 
@@ -122,7 +120,7 @@ class DutyController extends Controller
 
         foreach($objects_list as $object)
         {
-            $objects[] = array('name' => $object->getNom(),'id' => $object->getId());
+            $objects[] = array('name' => $object->getName(),'id' => $object->getId());
         }
 
         //dump($objects);
@@ -145,6 +143,9 @@ class DutyController extends Controller
     public function store(Request $request)
     {
         $form = $this->form(DutyForm::class);
+        $me = \Auth::id();
+
+        $user = $this->em->find("Users",$me);
 
         if (!$form->isValid()) {
             return redirect()->back()->withErrors($form->getErrors())->withInput();
@@ -154,23 +155,30 @@ class DutyController extends Controller
         
         $fieldValue = $form->getFieldValues();
         $createdId = $this->em->getRepository('Duties')->getLastId();
+        $country = $this->em->find('Countries',$request['Country']);
+        $item = $this->em->find('Items',$request['Item']);
+        //dump($fieldValue);
+        //dump(new \DateTime($fieldValue['UltimatumDate']));
 
-
-
-
-        $duty = new Entity\Duty();
+        $duty = new \Duties();
         $duty->setId($createdId[0]->getId() + 1);
         $duty->setTitle($fieldValue['Title']);
         $duty->setContenu($fieldValue['Description']);
-        $duty->setIsFree($fieldValue['Is_Free']);
-        $duty->setPrixMinimum($fieldValue['MinimumPrice']);
-        $duty->setPrixMaximum($fieldValue['MaximumPrice']);
-        //$duty->setObjetId($fieldValue['object']);
-        $duty->setCountriesList($fieldValue['country']);
+        $duty->setIsFree(is_null($fieldValue['Is_Free']) ? 0 : 1);
+        $duty->setMinPrice($fieldValue['MinimumPrice']);
+        $duty->setMaxPrice($fieldValue['MaximumPrice']);
+        $duty->setUltimatumDate(new \DateTime($fieldValue['UltimatumDate']));
+        $duty->setItem($item);
+        $duty->setImage($fieldValue['Title']);
+        $duty->setUser($user);
+        $duty->setCountry($country);
 
-        dump($fieldValue);
+        //dump($fieldValue);
 
-        //$this->em->persist($duty);
+        $this->em->persist($duty);
+        $this->em->flush();
+
+        return view('duty.store');
     }
 
     /**

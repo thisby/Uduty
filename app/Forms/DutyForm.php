@@ -10,10 +10,15 @@ class DutyForm extends Form
         $this
             ->add('Title', 'text',['label' => \Lang::get('App.duty.title'),])            
             ->add('Description', 'textarea')
-            ->add('Is_Free', 'checkbox',['label' => \Lang::get('App.duty.isFreeDuty')])
-            ->add('UltimatumDate', 'date',['label' => \Lang::get('App.duty.ultimatumDate')])
+            ->add('Is_Free', 'checkbox',
+                    ['label' => \Lang::get('App.duty.isFreeDuty')])
+            ->add('UltimatumDate', 'date',array(
+                    'widget' => 'single_text',
+                    'input' => 'datetime',
+                    'format' => 'dd-mm-yyyy',
+                    'label' => \Lang::get('App.duty.ultimatumDate')))
             ->add('MinimumPrice', 'text',['label' => \Lang::get('App.duty.minimumPrice')])
-            ->add('MaximumPrice', 'text',['label' => \Lang::get('App.duty.maximumPrice')])
+            ->add('MaximumPrice', 'text',['label' => \Lang::get('App.duty.maximumPrice')])            
             ->add('submit', 'submit', ['attr' => ['class'  => 'btn btn-lg pull-right'],'label' => \lang::get('App.form.save')]);
     }
 }

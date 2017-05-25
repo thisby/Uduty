@@ -46,9 +46,9 @@ class AppServiceProvider extends ServiceProvider
         return new EloquentDutiesRepository( new Duties );
       });       
 
-      $this->app->bind('App\Repositories\Objects\ObjectsRepository', function($app)
+      $this->app->bind('App\Repositories\Items\ItemsRepository', function($app)
       {
-        return new EloquentObjectsRepository( new Objects );
+        return new EloquentItemsRepository( new Items );
       });  
 
       $this->app->bind('App\Repositories\Continent\ContinentRepository', function($app)

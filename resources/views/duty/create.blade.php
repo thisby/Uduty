@@ -15,7 +15,7 @@
 	</div>
 	<div class="form-group">
 		<label for="countries">@lang('App.duty.countryAffected')</label>
-		<select class="input-medium" id="country">
+		<select class="input-medium" id="country" name="Country">
 			@foreach($countries as $country)
 			<option value="{{$country['id']}}">{{$country['name']}}</option>
 			@endforeach
@@ -24,7 +24,7 @@
 
 	<div class="form-group">
 		<label for="objects">@lang('App.duty.objetReference')</label>
-		<select class="input-medium" id="object">
+		<select class="input-medium" id="object" name="Item">
 			@foreach($objects as $object)
 			<option value="{{$object['id']}}">{{$object['name']}}</option>
 			@endforeach
@@ -47,7 +47,7 @@
 <script>
 
 $(function(){
-	$("#UltimatumDateGroup").datetimepicker({ locale: 'fr'});
+	$("#UltimatumDateGroup").datetimepicker({format:'DD-MM-YYYY'});
 })
 
 </script>

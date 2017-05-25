@@ -108,7 +108,7 @@ class Duties
      * Set the value of id.
      *
      * @param integer $id
-     * @return \Entity\Duty
+     * @return Duties
      */
     public function setId($id)
     {
@@ -127,11 +127,35 @@ class Duties
         return $this->id;
     }
 
+    /**
+     * Set the value of title.
+     *
+     * @param integer $title
+     * @return Duties
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of title.
+     *
+     * @return integer
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+
         /**
      * Set the value of item.
      *
      * @param integer $item
-     * @return \Entity\Duty
+     * @return Duties
      */
         public function setItem($item)
         {
@@ -154,7 +178,7 @@ class Duties
      * Set the value of country.
      *
      * @param string $country
-     * @return \Entity\Duty
+     * @return Duties
      */
         public function setCountry($country)
         {
@@ -177,7 +201,7 @@ class Duties
      * Set the value of contenu.
      *
      * @param string $contenu
-     * @return \Entity\Duty
+     * @return Duties
      */
     public function setContenu($contenu)
     {
@@ -194,6 +218,147 @@ class Duties
     public function getContenu()
     {
         return $this->contenu;
+    }
+
+
+
+    /**
+     * Set the value of minPrice.
+     *
+     * @param string $minPrice
+     * @return \Entity\Duty
+     */
+    public function setMinPrice($minPrice)
+    {
+        $this->minPrice = $minPrice;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of minPrice.
+     *
+     * @return string
+     */
+    public function getMinPrice()
+    {
+        return $this->minPrice;
+    }
+
+    /**
+     * Set the value of maxPrice.
+     *
+     * @param string $maxPrice
+     * @return \Entity\Duty
+     */
+    public function setMaxPrice($maxPrice)
+    {
+        $this->maxPrice = $maxPrice;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of maxPrice.
+     *
+     * @return string
+     */
+    public function getMaxPrice()
+    {
+        return $this->maxPrice;
+    }
+
+    /**
+     * Set the value of ultimatumDate.
+     *
+     * @param string $ultimatumDate
+     * @return \Entity\Duty
+     */
+    public function setUltimatumDate($ultimatumDate)
+    {
+        $this->ultimatumDate = $ultimatumDate;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of ultimatumDate.
+     *
+     * @return string
+     */
+    public function getUltimatumDate()
+    {
+        return $this->ultimatumDate;
+    }
+
+    /**
+     * Set the value of image.
+     *
+     * @param string $image
+     * @return \Entity\Duty
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of image.
+     *
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * Set the value of isFree.
+     *
+     * @param integer $isFree
+     * @return \Entity\Duty
+     */
+    public function setIsFree($isFree)
+    {
+        $this->isFree = $isFree;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of isFree.
+     *
+     * @return integer
+     */
+    public function getIsFree()
+    {
+        return $this->isFree;
+    }    
+
+    /**
+     * Set User entity (one to one).
+     *
+     * @param \Entity\User $user
+     * @return \Entity\Duty
+     */
+    public function setUser(Users $user = null)
+    {
+        //$user->setDuty($this);
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get User entity (one to one).
+     *
+     * @return Users
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 
 }
