@@ -3,9 +3,7 @@
 <div class="container">
 	<input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
 	<div class="row">
-
-
-		{{ $shopLines }}
+		Felicitations! Nous avons bien enregistré vos souhaits.
 
 	</div>
 </div>

@@ -174,7 +174,7 @@ class Duties
         return $this->item;
     }
 
-        /**
+    /**
      * Set the value of country.
      *
      * @param string $country

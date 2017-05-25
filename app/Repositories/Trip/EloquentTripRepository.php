@@ -5,7 +5,7 @@ class EloquentTripRepository implements TripRepository
     
     public function getAll()
     {
-        $query = \EntityManager::createQuery('SELECT t FROM Entity\Trip t');
+        $query = \EntityManager::createQuery('SELECT t FROM Trips t');
 		$trips = $query->getResult(); // array of User objects);
 		return $trips;
     }
@@ -14,7 +14,7 @@ class EloquentTripRepository implements TripRepository
     {
         $query = \EntityManager::createQuery('SELECT t FROM Trips t WHERE t.user = :user');
         $query->setParameter('user', $user);
-        $query->setFetchMode('trip', 'countries', 3);        
+        //$query->setFetchMode('trip', 'countries', 3);        
         $trips = $query->getResult();
         return $trips;        
     }

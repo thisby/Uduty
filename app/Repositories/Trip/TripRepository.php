@@ -5,4 +5,5 @@ interface TripRepository
     
     public function getAll();
 
+    public function getTripsByUser($user);
 }

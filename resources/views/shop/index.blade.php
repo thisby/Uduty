@@ -37,10 +37,11 @@
 
 		$(function()
 		{
-			$(".quantity").spinner({min: 0});
+			$(".quantity").spinner({min: 0,change:quantityChange(event,ui)});
 
 
-			$(".quantity").on('change',function(){
+			function quantityChange (e,ui)
+			{
 
 				var id = $(this).closest('tr').attr('data-id');
 		        var token = $('#token').val();
@@ -48,7 +49,7 @@
 				{
 					alert(r);
 				});
-			})
+			}
 
 			$(".remove").on('click',function(){
 				if (confirm("@lang('App.shop.deleteConfirmation')"))

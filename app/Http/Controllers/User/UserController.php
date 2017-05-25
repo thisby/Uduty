@@ -32,9 +32,8 @@ class UserController extends Controller
 	public function getTrips()
 	{
 		$me = \Auth::id();
-		$trips = $this->em->getRepository('Trip')->getTripsByUser($me);
+		$trips = $this->em->getRepository('Trips')->getTripsByUser($me);
 
-        dump($trips);
 
 		return view('user.trips',array('trips' => $trips));
 	}

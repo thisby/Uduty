@@ -77,6 +77,7 @@ class ShopController extends Controller
     public function store(Request $request)
     {
         $boughts = \Cart::content();
+        dump($boughts);
         $me = \Auth::user();
         $shopLines = [];
         foreach($boughts as $buy)
@@ -92,7 +93,7 @@ class ShopController extends Controller
             
         }
 
-        return view('shop/store',array('shopLines' => $shopLines));
+        return view('shop/store');
     }
 
     /**

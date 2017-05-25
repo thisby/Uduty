@@ -42,8 +42,8 @@
 /********/
 
 /* CART */
-Route::resource('cart', 'CartController', ['only' => ['index', 'store', 'update', 'destroy']]);
-Route::post('cart/qty','CartController@update')->name('qty');
+	Route::resource('cart', 'CartController', ['only' => ['index', 'store', 'update', 'destroy']]);
+	Route::post('cart/qty','CartController@update')->name('qty');
 /********/
 
 
