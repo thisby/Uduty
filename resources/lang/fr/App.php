@@ -8,10 +8,17 @@ return
 'slogan' => 'Conciergerie du monde',
 'lang' => 'FR',
 
+
 'localization' => 'fr_FR',
 
 'form' => array(
-	'save' => 'Exhaucer mon souhait!'),
+	'save' => 'Exhaucer mon souhait!',
+	'Password' => 'Mot de passe',
+	'Register' => 'S\'enregistrer',
+	'ConfirmPassword' => 'Confirmation du mot de passe',
+	'EmailAddress' => 'Adresse email',
+	'Name' => 'Nom'	
+	),
 
 
 'duty' => array(
@@ -23,7 +30,8 @@ return
 	'isFreeDuty' => 'Est ce un service bénévole ?',
 	'countryAffected' => 'Dans quel pays se trouve l\'objet recherché ?',
 	'ultimatumDate' => 'Date limite de réception d\'objet',
-	'objetReference' => 'Référence d\'objet'
+	'objetReference' => 'Référence d\'objet',
+	'creationOk' => 'Félicitations!Votre souhait est enregistré.Ne reste plus qu\'a attendre qu\'un voyageur...'	
 	),
 
 'shop' => array(

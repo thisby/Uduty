@@ -36,6 +36,15 @@ class EloquentDutiesRepository implements DutiesRepository
 		return $duties;        
     }
 
+    public function getDutiesByUser($user)
+    {
+        $dutiesQ = \EntityManager::createQuery('SELECT d FROM duties d WHERE d.user = :user');
+        $dutiesQ->setParameter('user', $user);
+        //$dutiesQ->setFetchMode('duties', 'item', 3);        
+        $duties = $dutiesQ->getResult();
+        return $duties;        
+    }
+
     public function getLastId()
     {
         $query = \EntityManager::createQuery('SELECT d FROM duties d ORDER BY d.id DESC');

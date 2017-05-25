@@ -77,13 +77,15 @@ class TripTableSeeder extends Seeder {
 	{
 		$faker = Faker\Factory::create();
 		$countries = DB::table('countries')->pluck('country_id')->all();
+		$users = (array)DB::table('users')->pluck('id')->all();
+
 		for ($i = 0; $i < 10; $i++)
 		{
 			DB::table('trips')->insert([
 		    //'id' => $i,//$faker->unique($reset = true)->randomDigitNotNull,
 				'country_id' => $faker->randomElement($countries),
 				'transport_id' => $faker->randomDigitNotNull,
-				'user_id' => $faker->randomDigitNotNull,
+				'user_id' => $faker->randomElement($users),
 				'departure_date' => $faker->dateTimeThisCentury->format('Y-m-d H:i:s'),
 				'end_date' => $faker->dateTimeThisCentury->format('Y-m-d H:i:s')
 				]);

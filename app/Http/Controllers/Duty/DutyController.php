@@ -54,8 +54,6 @@ class DutyController extends Controller
 
      $duties = [];
 
-     $repository = $this->em->getRepository('Items');
-
      foreach($dutiesByContinent as $duty)
      {
         //dump($duty->getCountry());

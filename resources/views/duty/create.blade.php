@@ -2,6 +2,7 @@
 @section('content')
 <div class="container">
 	{!!form_start($form)!!}
+	<input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
 	{!!form_until($form, 'Is_Free')!!}
 	<div class="form-group">
 		{!!form_label($form->UltimatumDate)!!}
@@ -37,9 +38,11 @@
 @endsection
 
 @section('scripts')
+<script src="{{ asset('js/app.js') }}"></script>
+<script src="/js/jquery-ui.js"></script>
 <script src="/js/jquery.min.js"></script>
 
-<script src='/js/jquery.datetimepicker.full.min.js'></script>
+<!--<script src='/js/jquery.datetimepicker.full.min.js'></script>-->
 
 <script src="/js/moment-with-locales.min.js"></script>
 <script src="/js/bootstrap-datetimepicker.min.js"></script>

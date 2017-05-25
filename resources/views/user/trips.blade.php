@@ -3,7 +3,11 @@
 <div class="container">
 	<div class="row">
 	<div class="col-md-9">
-	<span>@lang('App.duty.creationOk')</span>
+		@foreach($trips as $trip)
+			<div class="well">		
+				<span>{{$trip->getCountry()->getName()}}</span>
+			</div>
+		@endforeach
 </div>
 </div>
 </div>

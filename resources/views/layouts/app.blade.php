@@ -61,17 +61,21 @@
                         <ul class="dropdown-menu" role="menu">
                             <li>
                                 <a href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();">
-                                @lang('App.logout')
-                            </a>
+                                    onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                                    @lang('App.logout')
+                                </a>
 
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                {{ csrf_field() }}
-                            </form>
-                        </li>
-                    </ul>
-                </li>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                            </li>
+                            <li><a href="{{ route('duty.create') }}">Créer un duty</a></li>
+                            <li><a href="/user/duties">Mes duties</a></li>
+                            <li><a href="/user/trips">Mes voyages</a></li>
+
+                        </ul>
+                    </li>
                 @endif
                 <li id="basket"><a href="{{ route('shop/index') }}">
                     <img src = "/images/basket.png" style="margin-top:-7px;width:25px;vertical-align: middle;"/> <span id="wishes">0</span> duties</a></li>
@@ -83,17 +87,10 @@
     @yield('content')
 </div>
 
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="/js/jquery.min.js"></script>
-<script src="{{ asset('js/jquery-ui.js') }}"></script>
-
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<!-- Latest compiled and minified JavaScript -->
-<script src="/js/bootstrap.min.js" ></script>
+<script src="{{ asset('js/app.js') }}"></script>
+<script src="/js/jquery-ui.js"></script>
 <script src="/js/moment-with-locales.min.js"></script>
 <script src="/js/bootstrap-datetimepicker.min.js"></script>
-
-<script src="{{ asset('js/app.js') }}"></script>
 @yield('scripts')
 </body>
 </html>

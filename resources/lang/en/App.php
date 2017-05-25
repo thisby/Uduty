@@ -9,9 +9,14 @@ return
 'list' => 'duty/list',
 'view' => 'duty/view',
 
-
 'form' => array(
-	'save' => 'Fulfill my wish!'),
+	'save' => 'Fulfill my wish!',
+	'Password' => 'Password',
+	'Register' => 'Register',
+	'ConfirmPassword' => 'Confirm password',
+	'EmailAddress' => 'Email address',
+	'Name' => 'Name'
+	),
 
 
 'duty' => array(
@@ -23,7 +28,8 @@ return
 	'countryAffected' => 'What country got the object you look for?',
 	'title' => 'Title',
 	'ultimatumDate' => 'Deadline for receiving the object',
-	'objetReference' => 'Reference Object to assign'
+	'objetReference' => 'Reference Object to assign',
+	'creationOk' => 'Greetings!Your wish is on dock. Need only to wait a globe trotter...'	
 	),
 
 'shop' => array(
