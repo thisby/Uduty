@@ -1,6 +1,9 @@
 YB
 - remplacer les input hidden token par la metadatadonnée csrf_token
-- MAJ du panier en fonction des quantités
+- MAJ du panier en fonction des quantités X
+- vider le panier quand achat fini X
+- afficher les duties en temps réel dans le panier
+- afficher le sous total par item puis le total
 - Formulaire création duty X
 - Formulaire création voyage
 - Afficher tous les duties de l'utilisateur

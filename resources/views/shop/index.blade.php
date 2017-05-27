@@ -37,12 +37,9 @@
 
 		$(function()
 		{
-			$(".quantity").spinner({min: 0,change:quantityChange(event,ui)});
-
 
 			function quantityChange (e,ui)
 			{
-
 				var id = $(this).closest('tr').attr('data-id');
 		        var token = $('#token').val();
 				$.post('{{Route("qty")}}',{'quantity':this.value,'id':id,'_token' : token},function(r)
@@ -50,6 +47,19 @@
 					alert(r);
 				});
 			}
+
+			$(".quantity").spinner({min: 0,change:function (e,ui)
+			{
+				var id = $(this).closest('tr').attr('data-id');
+		        var token = $('#token').val();
+				$.post('{{Route("qty")}}',{'quantity':this.value,'id':id,'_token' : token},function(r)
+				{
+					alert(r);
+				});
+			}});
+
+
+
 
 			$(".remove").on('click',function(){
 				if (confirm("@lang('App.shop.deleteConfirmation')"))

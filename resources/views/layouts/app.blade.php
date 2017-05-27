@@ -78,9 +78,9 @@
                     </li>
                 @endif
                 <li id="basket"><a href="{{ route('shop/index') }}">
-                    <img src = "/images/basket.png" style="margin-top:-7px;width:25px;vertical-align: middle;"/> <span id="wishes">0</span> duties</a></li>
+                    <img src = "/images/basket.png" style="margin-top:-7px;width:25px;vertical-align: middle;"/> <span id="wishes">{{Cart::content()}}</span> duties</a></li>
                 </ul>
-            </div>
+            </divC
         </div>
     </nav>
 

@@ -77,7 +77,6 @@ class ShopController extends Controller
     public function store(Request $request)
     {
         $boughts = \Cart::content();
-        dump($boughts);
         $me = \Auth::user();
         $shopLines = [];
         foreach($boughts as $buy)
@@ -89,10 +88,9 @@ class ShopController extends Controller
             $shopLines[] = $shopLine;
             
             $this->em->persist($shopLine);
-            $this->em->flush();
-            
+            $this->em->flush();           
         }
-
+        $this->reset();
         return view('shop/store');
     }
 
@@ -137,6 +135,11 @@ class ShopController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+    }
+
+    public function reset()
+    {
+        \Cart::destroy();
     }
 }
