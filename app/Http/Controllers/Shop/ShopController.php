@@ -39,6 +39,7 @@ class ShopController extends Controller
 
         $items = [];
         $boughts = \Cart::content();
+        $total = 0;
         //dump($boughts);
         foreach($boughts as $buy)
         {
@@ -48,14 +49,16 @@ class ShopController extends Controller
             "dutyId" => $buy->id,
             'qty'=> $buy->qty,                   
             'name'=> $buy->name,
-            'price' =>$buy->price
+            'price' =>$buy->price,
+            'subtotal' => $buy->price * $buy->qty            
             ];
             $items[] = $bought;
+            $total += $bought->subtotal;
         }
 
         //dump($items);
 
-        return view('shop/index',array('form' => $form,'items' =>$items));
+        return view('shop/index',array('form' => $form,'items' =>$items,'total' => $total));
     }
 
     /**
