@@ -15,7 +15,11 @@ return
 	'Register' => 'Register',
 	'ConfirmPassword' => 'Confirm password',
 	'EmailAddress' => 'Email address',
-	'Name' => 'Name'
+	'Name' => 'Name',
+	'Rememberme' => 'Remember me',
+	'Login' => 'Login',
+	'Forgetpassword' => 'Forgot your password ?'
+
 	),
 
 

@@ -17,7 +17,10 @@ return
 	'Register' => 'S\'enregistrer',
 	'ConfirmPassword' => 'Confirmation du mot de passe',
 	'EmailAddress' => 'Adresse email',
-	'Name' => 'Nom'	
+	'Name' => 'Nom',
+	'Rememberme' => 'Se souvenir de moi',
+	'Login' => 'Se connecter',
+	'Forgetpassword' => 'Mot de passe oublié'	
 	),
 
 
